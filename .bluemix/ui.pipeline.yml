@@ -1,0 +1,140 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: master
+    service: ${UI_REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEV
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ${DEV_REGION_ID}
+      organization: ${DEV_ORG_NAME}
+      space: ${DEV_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Push app
+      export CF_APP_NAME="dev-$CF_APP"
+      cf push "${CF_APP_NAME}"
+      # View logs
+      #cf logs "${CF_APP_NAME}" --recent
+- name: TEST
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Push app
+      export CF_APP_NAME="test-$CF_APP"
+      cf push "${CF_APP_NAME}"
+      # View logs
+      #cf logs "${CF_APP_NAME}" --recent
+  - name: Sauce Labs Tests
+    type: tester
+    extension_id: ibm.devops.services.pipeline.saucelabs
+    services:
+      - ${SAUCE_LABS}
+    target:
+      region_id: ${QA_REGION_ID}
+      organization: ${QA_ORG_NAME}
+      space: ${QA_SPACE_NAME}
+    DL_ASSETS: 'false'
+    SELECT_CMD: custom
+    COMMAND: |-
+      #!/bin/bash
+      GRUNTFILE="tests/Gruntfile.js"
+      if [ -f $GRUNTFILE ]; then
+        npm install
+        echo $APP_URL | grep "stage1"
+        if [ $? -eq 0 ]; then
+          grunt test_fake --gruntfile $GRUNTFILE --base .
+        else
+          grunt test_real --gruntfile $GRUNTFILE --base .
+        fi
+      else
+        echo "$GRUNTFILE not found."
+      fi 
+    enable_tests: true
+    test_file_pattern: '*.xml'
+- name: PROD
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  - name: APP_URL
+    value: undefined
+    type: text
+  jobs:
+  - name: Blue/Green Deploy
+    type: deployer
+    target:
+      region_id: ${PROD_REGION_ID}
+      organization: ${PROD_ORG_NAME}
+      space: ${PROD_SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      if ! cf app $CF_APP; then  
+        cf push $CF_APP
+      else
+        OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
+        rollback() {
+          set +e  
+          if cf app $OLD_CF_APP; then
+            cf logs $CF_APP --recent
+            cf delete $CF_APP -f
+            cf rename $OLD_CF_APP $CF_APP
+          fi
+          exit 1
+        }
+        set -e
+        trap rollback ERR
+        cf rename $CF_APP $OLD_CF_APP
+        cf push $CF_APP
+        cf delete $OLD_CF_APP -f
+      fi

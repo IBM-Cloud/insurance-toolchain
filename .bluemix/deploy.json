@@ -1,0 +1,156 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MicroServices Deploy Stage",
+    "description": "Feb Demo Microservices Stage Schema",
+    "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
+    "type": "object",
+    "properties": {
+        "dev-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "dev-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "dev-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "qa-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "qa-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "qa-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "prod-region": {
+            "description": "The bluemix region",
+            "type": "string"
+        },
+        "prod-organization": {
+            "description": "The bluemix org",
+            "type": "string"
+        },
+       "prod-space": {
+            "description": "The bluemix space",
+            "type": "string"
+        },
+        "orders-app-name": {
+            "description": "orders app name",
+            "type": "string"
+        },
+       "catalog-app-name": {
+            "description": "catalog app name",
+            "type": "string"
+        },
+       "ui-app-name": {
+            "description": "ui app name",
+            "type": "string"
+        }
+    },
+    "required": ["dev-region", "dev-organization", "dev-space", "qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "form": [
+       {
+          "type": "validator",
+          "url": "/devops/setup/bm-helper/helper.html"
+       },        
+       {
+          "type": "text",
+          "readonly": false,
+          "title": "Orders App Name",
+          "key": "orders-app-name"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Catalog App Name",
+          "key": "catalog-app-name"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "UI App Name",
+          "key": "ui-app-name"
+        },
+        {
+            "type": "table",
+            "columnCount": 4,
+            "widths": ["15%", "28%", "28%", "28%"],
+            "items": [
+                {
+                  "type": "label",
+                  "title": ""
+                },
+                {
+                  "type": "label",
+                  "title": "Region"
+                },
+                {
+                  "type": "label",
+                  "title": "Organization"
+                },
+                {
+                  "type": "label",
+                  "title": "Space"
+                },
+                {
+                  "type": "label",
+                  "title": "Dev Stage"
+                },
+                {
+                  "type": "select",
+                  "key": "dev-region"
+                },
+                {
+                  "type": "select",
+                  "key": "dev-organization"
+                },
+                {
+                  "type": "select",
+                  "key": "dev-space",
+                  "readonly": false
+                },
+                {
+                  "type": "label",
+                  "title": "Test Stage"
+                },
+                {
+                  "type": "select",
+                  "key": "qa-region"
+                },
+                {
+                  "type": "select",
+                  "key": "qa-organization"
+                },
+                {
+                  "type": "select",
+                  "key": "qa-space",
+                  "readonly": false
+                },
+                {
+                  "type": "label",
+                  "title": "Prod Stage"
+                },
+                {
+                  "type": "select",
+                  "key": "prod-region"
+                },
+                {
+                  "type": "select",
+                  "key": "prod-organization"
+                },
+                {
+                  "type": "select",
+                  "key": "prod-space",
+                  "readonly": false
+                }
+            ]
+        }
+    ]
+}

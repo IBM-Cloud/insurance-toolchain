@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MicroServices Deploy Stage",
+    "description": "Feb Demo Microservices GitHub Schema",
+    "longDescription": "The GitHub Service allows you to create or use an existing GitHub repository to store your source code.",
+    "type": "object",
+    "properties": {
+        "catalog-api-repo_name": {
+            "type": "string"
+        },
+        "catalog-api-repo_url": {
+            "type": "string"
+        },
+        "orders-api-repo_name": {
+            "type": "string"
+        },
+        "orders-api-repo_url": {
+            "type": "string"
+        },
+        "ui-repo_name": {
+            "type": "string"
+        },
+        "ui-repo_url": {
+            "type": "string"
+        }
+    },
+    "required": ["catalog-api-repo_name", "catalog-api-repo_url", "orders-api-repo_name", "orders-api-repo_url", "ui-repo_name",  "ui-repo_url"],
+    "form": [
+      {
+        "type": "validator",
+        "url": "/devops/setup/bm-helper/custom_github_helper.html"
+      },
+      {
+        "type": "table",
+        "columnCount": 3,
+        "widths": ["47%", "6%", "47%"],
+        "items": [
+            {
+              "type": "label",
+              "title": "Source Repository"
+            },
+            {
+              "type": "label",
+              "title": ""
+            },
+            {
+              "type": "label",
+              "title": "Target Repository"
+            },
+            {
+              "type": "text",
+              "key": "catalog-api-repo_url"
+            },
+            {
+              "type": "icon",
+              "iconType": "right_arrow"
+            },
+            {
+              "type": "text",
+              "key": "catalog-api-repo_name"
+            },
+            {
+              "type": "text",
+              "key": "orders-api-repo_url"
+            },
+            {
+              "type": "icon",
+              "iconType": "right_arrow"
+            },
+            {
+              "type": "text",
+              "key": "orders-api-repo_name"
+            },  {
+              "type": "text",
+              "key": "ui-repo_url"
+            },
+            {
+              "type": "icon",
+              "iconType": "right_arrow"
+            },
+            {
+              "type": "text",
+              "key": "ui-repo_name"
+            }
+        ]
+      }
+    ] 
+}
