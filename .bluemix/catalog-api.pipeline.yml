@@ -31,12 +31,6 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-  - name: DEV Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: Unit Test coverage
-    APPLICATION_NAME: Catalog-API
-    ENVIRONMENT: DEV
 - name: DEV
   inputs:
   - type: job
