@@ -30,13 +30,13 @@ stages:
         grunt dev-test-cov --no-color -f --gruntfile $GRUNTFILE --base .
       else
         echo "$GRUNTFILE not found."
-      fi	  
+      fi
   - name: DEV Gate
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_devops_gate
     CRITERIA: Unit Test coverage
     APPLICATION_NAME: Catalog-API
-    ENVIRONMENT: DEV	  
+    ENVIRONMENT: DEV
 - name: DEV
   inputs:
   - type: job
@@ -135,7 +135,7 @@ stages:
         fi
       else
         echo "$GRUNTFILE not found."
-      fi      
+      fi
     enable_tests: true
     test_file_pattern: '*.xml'
 - name: PROD
@@ -160,12 +160,12 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared myMicroservicesCloudant
-      if ! cf app $CF_APP; then  
+      if ! cf app $CF_APP; then
         cf push $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
-          set +e  
+          set +e
           if cf app $OLD_CF_APP; then
             cf logs $CF_APP --recent
             cf delete $CF_APP -f

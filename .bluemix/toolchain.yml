@@ -58,7 +58,7 @@ ui-build:
         PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
       execute: true
     services: ["ui-repo", "test"]
-  hidden: [form, description]  
+  hidden: [form, description]
 
 catalog-api-build:
   service_id: pipeline
@@ -120,11 +120,11 @@ test:
 alerting:
   service_id: pagerduty
   include: pagerduty.yml
-  
+
 #Web IDE
 webide:
   service_id: orion
-  
+
 #Deployment
 deploy:
   schema: deploy.json
@@ -136,9 +136,9 @@ deploy:
     dev-organization: "{{organization}}"
     qa-organization: "{{organization}}"
     prod-organization: "{{organization}}"
-    dev-space: dev
-    qa-space: qa
-    prod-space: prod
+    dev-space: devops-demo-dev
+    qa-space: devops-demo-test
+    prod-space: devops-demo-prod
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
@@ -148,9 +148,9 @@ github:
   schema: github.json
   service-category: githubpublic
   parameters:
-    catalog-api-repo_name: "catalog-api-{{name}}"
-    catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
-    orders-api-repo_name: "orders-api-{{name}}"
-    orders-api-repo_url: https://github.com/open-toolchain/Microservices_OrdersAPI
-    ui-repo_name: "ui-{{name}}"
-    ui-repo_url: https://github.com/open-toolchain/Microservices_UI
+    catalog-api-repo_name: "insurance-catalog-{{name}}"
+    catalog-api-repo_url: https://github.com/IBM-Bluemix/insurance-catalog
+    orders-api-repo_name: "insurance-orders-{{name}}"
+    orders-api-repo_url: https://github.com/IBM-Bluemix/insurance-orders
+    ui-repo_name: "insurance-store-front-{{name}}"
+    ui-repo_url: https://github.com/IBM-Bluemix/insurance-store-front
