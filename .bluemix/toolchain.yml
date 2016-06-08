@@ -39,7 +39,7 @@ ui-repo:
 ui-build:
   service_id: pipeline
   parameters:
-    name: "ui-{{name}}"
+    name: "insurance-store-front-{{name}}"
     ui-pipeline: true
     configuration:
       content: $file(ui.pipeline.yml)
@@ -63,7 +63,7 @@ ui-build:
 catalog-api-build:
   service_id: pipeline
   parameters:
-    name: "catalog-api-{{name}}"
+    name: "insurance-catalog-{{name}}"
     configuration:
       content: $file(catalog-api.pipeline.yml)
       env:
@@ -86,7 +86,7 @@ catalog-api-build:
 orders-api-build:
   service_id: pipeline
   parameters:
-    name: "orders-api-{{name}}"
+    name: "insurance-orders-{{name}}"
     configuration:
       content: $file(order-api.pipeline.yml)
       env:
