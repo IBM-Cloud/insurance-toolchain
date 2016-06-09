@@ -7,6 +7,8 @@ Get started with this sample, which is an online insurance application that cons
 
 The sample includes a DevOps toolchain that is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, deployment risk analytics and messaging.
 
+![toolchain preview](./.bluemix/dra_toolchain.png)
+
 ###To get started, click this button:
 [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git)
 
