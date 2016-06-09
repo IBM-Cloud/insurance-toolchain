@@ -1,6 +1,6 @@
 ---
-name: "Cloud-native Toolchain for Microservices"
-description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and deployment risk analytics.\n\nTo get started, click **Create**."
+name: "Cloud-native Toolchain for Microservices (Insurance store)"
+description: "With this cloud-native toolchain, you use a sample to create an insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and deployment risk analytics.\n\nTo get started, click **Create**."
 version: 0.2
 image: data:image/png;base64,$file(dra-toolchain2.png,base64)
 required:
