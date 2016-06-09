@@ -1,11 +1,19 @@
 #Cloud-native toolchain for microservices
 
 Get started with this sample, which is an online insurance application that consists of three microservices:
-- a Catalog API
-- an Orders API
-- a user interface (UI) that calls both of the APIs.
+- an insurance catalog (exposed through an API)
+- an order broker microservice (also exposed through an API)
+- a user interface (UI) that calls both of the APIs above
 
-The sample includes a DevOps toolchain that is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, deployment risk analytics and messaging.
+The toolchain is preconfigured for:
+- issue tracking
+- source control
+- an online IDE
+- continuous delivery and integration (CI/CD)
+- functional testing
+- notifications and messaging
+- deployment risk analytics
+- blue-green deployment
 
 ###To get started, click this button:
 [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git)
