@@ -13,4 +13,7 @@ The sample includes a DevOps toolchain that is preconfigured for continuous deli
 ---
 ###Learn more
 
-* [Cloud-native toolchain for microservices](https://www.ibm.com/devops/method/toolchains/microservices_toolchain) on the IBM Bluemix Garage Method site
+* Bluemix DevOps Services: https://new-console.ng.bluemix.net/devops
+* Documentation on [Bluemix Toolchains](https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html)
+* InterConnect 2016 [video recording](https://vimeo.com/156126035/8b04b8878a)
+* [IBM Bluemix Garage Method](https://www.ibm.com/devops/method)
