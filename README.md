@@ -1,11 +1,12 @@
 #Cloud-native toolchain for microservices
 
-Get started with this sample, which is an online insurance application that consists of three microservices:
-- an insurance catalog (exposed through an API)
-- an order broker microservice (also exposed through an API)
-- a user interface (UI) that calls both of the APIs above
+Get started with this sample, which is an online insurance application that consists of three microservices:  
+- [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  
+- [Orders][github_orders_url] - An API for retrieving and updating a list of insurance policy orders made by customers  
+- [Store Front][github_store_url] - UI that leverages both of the above APIs to allow users to intelligently query the policies and narrow down to their best possible options
 
 The toolchain is preconfigured for:
+
 - issue tracking
 - source control
 - an online IDE
@@ -24,6 +25,14 @@ The toolchain is preconfigured for:
 ###Learn more
 
 * Bluemix DevOps Services: https://new-console.ng.bluemix.net/devops
-* Documentation on [Bluemix Toolchains](https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html)
-* InterConnect 2016 [video recording](https://vimeo.com/156126035/8b04b8878a)
-* [IBM Bluemix Garage Method](https://www.ibm.com/devops/method)
+* Documentation on [Bluemix Toolchains][toolchains_overview_url]
+* InterConnect 2016 [video recording][toolchains_interconnect_video_url]
+* [IBM Bluemix Garage Method][garage_method_url]
+
+<!--Links-->
+[github_store_url]: https://github.com/IBM-Bluemix/insurance-store-front
+[github_catalog_url]: https://github.com/IBM-Bluemix/insurance-catalog
+[github_orders_url]: https://github.com/IBM-Bluemix/insurance-orders
+[toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
+[toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
+[garage_method_url]: https://www.ibm.com/devops/method
