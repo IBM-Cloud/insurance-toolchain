@@ -35,7 +35,9 @@ stages:
       cf create-service cloudantNoSQLDB Shared dev-policy-db
       # Push app
       export CF_APP_NAME="dev-$CF_APP"
-      cf push "${CF_APP_NAME}"
+      cf push "${CF_APP_NAME}" --no-start
+      cf bind-service "${CF_APP_NAME}" dev-policy-db
+      cf start "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 - name: TEST
@@ -65,7 +67,9 @@ stages:
       cf create-service cloudantNoSQLDB Shared test-policy-db
       # Push app
       export CF_APP_NAME="test-$CF_APP"
-      cf push "${CF_APP_NAME}"
+      cf push "${CF_APP_NAME}" --no-start
+      cf bind-service "${CF_APP_NAME}" test-policy-db
+      cf start "${CF_APP_NAME}"
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
   - name: Sauce Labs Tests
@@ -120,8 +124,10 @@ stages:
     script: |-
       #!/bin/bash
       cf create-service cloudantNoSQLDB Shared policy-db
-      if ! cf app $CF_APP; then  
-        cf push $CF_APP
+      if ! cf app $CF_APP; then
+        cf push $CF_APP --no-start
+        cf bind-service $CF_APP policy-db
+        cf start $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
@@ -136,6 +142,8 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP
+        cf push $CF_APP --no-start
+        cf bind-service $CF_APP policy-db
+        cf start $CF_APP
         cf delete $OLD_CF_APP -f
       fi
