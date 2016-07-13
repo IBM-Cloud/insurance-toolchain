@@ -21,16 +21,13 @@ stages:
   - name: CF_APP_NAME
     value: undefined
     type: text
-  - name: APP_URL
-    value: undefined
-    type: text
   jobs:
   - name: Deploy
     type: deployer
     target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
@@ -57,9 +54,9 @@ stages:
   - name: Deploy
     type: deployer
     target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
@@ -74,9 +71,9 @@ stages:
     services:
       - ${SAUCE_LABS}
     target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
     DL_ASSETS: 'false'
     SELECT_CMD: custom
     COMMAND: |-
@@ -106,16 +103,13 @@ stages:
   - name: CF_APP_NAME
     value: undefined
     type: text
-  - name: APP_URL
-    value: undefined
-    type: text
   jobs:
   - name: Blue/Green Deploy
     type: deployer
     target:
-      region_id: ${PROD_REGION_ID}
-      organization: ${PROD_ORG_NAME}
-      space: ${PROD_SPACE_NAME}
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash

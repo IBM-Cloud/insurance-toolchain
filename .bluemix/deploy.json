@@ -5,39 +5,15 @@
     "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
     "type": "object",
     "properties": {
-        "dev-region": {
+        "region": {
             "description": "The bluemix region",
             "type": "string"
         },
-        "dev-organization": {
+        "organization": {
             "description": "The bluemix org",
             "type": "string"
         },
-       "dev-space": {
-            "description": "The bluemix space",
-            "type": "string"
-        },
-        "qa-region": {
-            "description": "The bluemix region",
-            "type": "string"
-        },
-        "qa-organization": {
-            "description": "The bluemix org",
-            "type": "string"
-        },
-       "qa-space": {
-            "description": "The bluemix space",
-            "type": "string"
-        },
-        "prod-region": {
-            "description": "The bluemix region",
-            "type": "string"
-        },
-        "prod-organization": {
-            "description": "The bluemix org",
-            "type": "string"
-        },
-       "prod-space": {
+       "space": {
             "description": "The bluemix space",
             "type": "string"
         },
@@ -54,7 +30,7 @@
             "type": "string"
         }
     },
-    "required": ["dev-region", "dev-organization", "dev-space", "qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "required": ["region", "organization", "space", "orders-app-name", "catalog-app-name", "ui-app-name"],
     "form": [
        {
           "type": "validator",
@@ -80,13 +56,9 @@
         },
         {
             "type": "table",
-            "columnCount": 4,
-            "widths": ["15%", "28%", "28%", "28%"],
+            "columnCount": 3,
+            "widths": ["33%", "33%", "33%"],
             "items": [
-                {
-                  "type": "label",
-                  "title": ""
-                },
                 {
                   "type": "label",
                   "title": "Region"
@@ -100,54 +72,16 @@
                   "title": "Space"
                 },
                 {
-                  "type": "label",
-                  "title": "Dev Stage"
+                  "type": "select",
+                  "key": "region"
                 },
                 {
                   "type": "select",
-                  "key": "dev-region"
+                  "key": "organization"
                 },
                 {
                   "type": "select",
-                  "key": "dev-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "dev-space",
-                  "readonly": false
-                },
-                {
-                  "type": "label",
-                  "title": "Test Stage"
-                },
-                {
-                  "type": "select",
-                  "key": "qa-region"
-                },
-                {
-                  "type": "select",
-                  "key": "qa-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "qa-space",
-                  "readonly": false
-                },
-                {
-                  "type": "label",
-                  "title": "Prod Stage"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-region"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-space",
+                  "key": "space",
                   "readonly": false
                 }
             ]

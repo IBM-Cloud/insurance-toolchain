@@ -47,15 +47,9 @@ ui-build:
         SAUCE_LABS: "test"
         UI_REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+        SPACE_NAME: "{{deploy.parameters.space}}"
+        ORG_NAME: "{{deploy.parameters.organization}}"
+        REGION_ID: "{{deploy.parameters.region}}"
       execute: true
     services: ["ui-repo", "test"]
   hidden: [form, description]
@@ -70,15 +64,9 @@ catalog-api-build:
         SAUCE_LABS: "test"
         CATALOG_API_REPO: "catalog-api-repo"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+        SPACE_NAME: "{{deploy.parameters.space}}"
+        ORG_NAME: "{{deploy.parameters.organization}}"
+        REGION_ID: "{{deploy.parameters.region}}"
       execute: true
     services: ["catalog-api-repo", "test"]
   hidden: [form, description]
@@ -93,15 +81,9 @@ orders-api-build:
         SAUCE_LABS: "test"
         ORDER_API_REPO: "orders-api-repo"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+        SPACE_NAME: "{{deploy.parameters.space}}"
+        ORG_NAME: "{{deploy.parameters.organization}}"
+        REGION_ID: "{{deploy.parameters.region}}"
       execute: true
     services: ["orders-api-repo", "test"]
   hidden: [form, description]
@@ -130,15 +112,9 @@ deploy:
   schema: deploy.json
   service-category: pipeline
   parameters:
-    dev-region: "{{region}}"
-    qa-region: "{{region}}"
-    prod-region: "{{region}}"
-    dev-organization: "{{organization}}"
-    qa-organization: "{{organization}}"
-    prod-organization: "{{organization}}"
-    dev-space: devops-demo-dev
-    qa-space: devops-demo-test
-    prod-space: devops-demo-prod
+    region: "{{region}}"
+    organization: "{{organization}}"
+    space: "{{space}}"
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
