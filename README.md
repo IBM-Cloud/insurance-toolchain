@@ -19,9 +19,19 @@ The toolchain is preconfigured for:
 ###To get started, click this button:
 [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git)
 
+Clicking it will:
+- **create three github repositories** with the required source code for the three microservices
+- **instantiate the toolchain** in your Bluemix org and space
+- **trigger the toolchain**, thereby creating 3 instances (dev, test and prod) for each of the 3 microservices.
+
+You're ready to give the demo (see video below) after all 9 applications are deployed. It should only take only a few minutes.
+
+> Insert link to video here
+
 ![toolchain preview](./.bluemix/dra-toolchain2.png)
 
 ---
+
 ###Learn more
 
 * Bluemix DevOps Services: https://new-console.ng.bluemix.net/devops
