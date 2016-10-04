@@ -4,7 +4,7 @@ stages:
   inputs:
   - type: git
     branch: new-toolchain
-    service: ${ORDER_API_REPO}
+    service: ${REPO}
   triggers:
   - type: commit
   jobs:
