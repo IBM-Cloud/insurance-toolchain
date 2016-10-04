@@ -44,9 +44,9 @@ ui-build-dev:
       content: $file(ui.pipeline.dev.yml)
       env:
         CF_APP_NAME: "dev-{{deploy.parameters.ui-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
         CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
         ORDERS_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
       execute: true
@@ -61,9 +61,9 @@ catalog-api-build-dev:
       content: $file(catalog-api.pipeline.dev.yml)
       env:
         CF_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
     services: ["catalog-api-repo"]
   hidden: [form, description]
@@ -76,9 +76,9 @@ orders-api-build-dev:
       content: $file(order-api.pipeline.dev.yml)
       env:
         CF_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
         CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
       execute: true
     services: ["orders-api-repo"]
@@ -105,9 +105,9 @@ deploy:
   schema: deploy.json
   service-category: pipeline
   parameters:
-    region: "{{region}}"
-    organization: "{{organization}}"
-    space: "{{space}}"
+    selected-region: "{{region}}"
+    selected-organization: "{{organization}}"
+    selected-space: "{{space}}"
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
