@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
-    "description": "Feb Demo Microservices Stage Schema",
+    "description": "",
     "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
     "type": "object",
     "properties": {
@@ -35,7 +35,7 @@
        {
           "type": "validator",
           "url": "/devops/setup/bm-helper/helper.html"
-       },        
+       },
        {
           "type": "text",
           "readonly": false,

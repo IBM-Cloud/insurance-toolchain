@@ -1,6 +1,0 @@
----
-parameters:
-- criteria_name: "Unit Test coverage"
-  results_file_format: "Istambul"
-  min_coverage: 0.75
-  monitor_regression: true

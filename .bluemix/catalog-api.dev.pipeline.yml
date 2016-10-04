@@ -1,0 +1,36 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: new-toolchain
+    service: ${CATALOG_API_REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  jobs:
+  - name: Deploy to dev
+    type: deployer
+    target:
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Create CF services
+      cf create-service cloudantNoSQLDB Lite dev-insurance-policy-db
+      cf create-service tradeoff_analytics standard insurance-tradeoff-analytics
+      # Deploy app
+      cf push $CF_APP -n $CF_APP --no-start
+      cf bind-service $CF_APP dev-insurance-policy-db
+      cf start $CF_APP

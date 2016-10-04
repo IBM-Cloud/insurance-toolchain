@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
-    "description": "Feb Demo Microservices GitHub Schema",
+    "description": "",
     "longDescription": "The GitHub Service allows you to create or use an existing GitHub repository to store your source code.",
     "type": "object",
     "properties": {
@@ -84,5 +84,5 @@
             }
         ]
       }
-    ] 
+    ]
 }
