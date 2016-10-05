@@ -22,9 +22,20 @@
         },
         "ui-repo_url": {
             "type": "string"
+        },
+        "dashboard-repo_name": {
+            "type": "string"
+        },
+        "dashboard-repo_url": {
+            "type": "string"
         }
     },
-    "required": ["catalog-api-repo_name", "catalog-api-repo_url", "orders-api-repo_name", "orders-api-repo_url", "ui-repo_name",  "ui-repo_url"],
+    "required": [
+      "catalog-api-repo_name", "catalog-api-repo_url",
+      "orders-api-repo_name", "orders-api-repo_url",
+      "ui-repo_name",  "ui-repo_url",
+      "dashboard-repo_name",  "dashboard-repo_url"
+    ],
     "form": [
       {
         "type": "validator",
@@ -70,7 +81,8 @@
             {
               "type": "text",
               "key": "orders-api-repo_name"
-            },  {
+            },
+            {
               "type": "text",
               "key": "ui-repo_url"
             },
@@ -81,6 +93,18 @@
             {
               "type": "text",
               "key": "ui-repo_name"
+            },
+            {
+              "type": "text",
+              "key": "dashboard-repo_url"
+            },
+            {
+              "type": "icon",
+              "iconType": "right_arrow"
+            },
+            {
+              "type": "text",
+              "key": "dashboard-repo_name"
             }
         ]
       }

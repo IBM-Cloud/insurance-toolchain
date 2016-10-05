@@ -21,16 +21,26 @@
             "description": "orders app name",
             "type": "string"
         },
-       "catalog-app-name": {
+        "catalog-app-name": {
             "description": "catalog app name",
             "type": "string"
         },
-       "ui-app-name": {
+        "ui-app-name": {
             "description": "ui app name",
+            "type": "string"
+        },
+        "dashboard-app-name": {
+            "description": "dashboard app name",
             "type": "string"
         }
     },
-    "required": ["selected-region", "selected-organization", "selected-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "required": [
+      "selected-region", "selected-organization", "selected-space",
+      "orders-app-name",
+      "catalog-app-name",
+      "ui-app-name",
+      "dashboard-app-name"
+    ],
     "form": [
        {
           "type": "validator",
@@ -53,6 +63,12 @@
           "readonly": false,
           "title": "UI App Name",
           "key": "ui-app-name"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Dashboard App Name",
+          "key": "dashboard-app-name"
         },
         {
             "type": "table",

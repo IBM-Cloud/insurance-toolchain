@@ -35,6 +35,14 @@ ui-repo:
     has_issues: true
   hidden: [form, description]
 
+dashboard-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "{{github.parameters.dashboard-repo_name}}"
+    repo_url: "{{github.parameters.dashboard-repo_url}}"
+    type: clone
+    has_issues: true
+
 # Pipelines
 ui-build-dev:
   service_id: pipeline
@@ -87,6 +95,22 @@ orders-api-build-dev:
     services: ["orders-api-repo"]
   hidden: [form, description]
 
+dashboard-build-dev:
+  service_id: pipeline
+  parameters:
+    name: "dashboard (dev)"
+    configuration:
+      content: $file(dashboard.pipeline.dev.yml)
+      env:
+        REPO: "dashboard-repo"
+        CF_APP_NAME: "dev-{{deploy.parameters.dashboard-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["dashboard-repo"]
+  hidden: [form, description]
+
 #Github
 github:
   schema: github.json
@@ -98,6 +122,8 @@ github:
     orders-api-repo_url: https://github.com/IBM-Bluemix/insurance-orders
     ui-repo_name: "cloudco-insurance-bot"
     ui-repo_url: https://github.com/IBM-Bluemix/insurance-bot
+    dashboard-repo_name: "cloudco-insurance-dashboard"
+    dashboard-repo_url: https://github.com/IBM-Bluemix/insurance-bot-dashboard
 
 #Web IDE
 webide:
@@ -114,3 +140,4 @@ deploy:
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
+    dashboard-app-name: "{{dashboard-repo.parameters.repo_name}}"
