@@ -1,6 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Custom title",
-    "description": "short description",
-    "longDescription": "A custom description from github.json"
-}
