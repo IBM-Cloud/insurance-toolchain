@@ -36,6 +36,7 @@ ui-repo:
   hidden: [form, description]
 
 dashboard-repo:
+  schema: dashboard.github.json
   service_id: githubpublic
   parameters:
     repo_name: "{{github.parameters.dashboard-repo_name}}"
