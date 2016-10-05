@@ -39,7 +39,9 @@ stages:
       #!/bin/bash
       # Create CF services
       cf create-service compose-for-mongodb Standard dev-insurance-bot-db
+      cf create-service tone_analyzer standard insurance-tone_analyzer
       # Deploy app
       cf push $CF_APP -n $CF_APP --no-start
       cf bind-service $CF_APP dev-insurance-bot-db
+      cf bind-service $CF_APP insurance-tone_analyzer
       cf start $CF_APP
