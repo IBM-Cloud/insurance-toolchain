@@ -4,7 +4,8 @@
 Get started with this sample, which is an online insurance application that consists of three microservices:  
 - [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  
 - [Orders][github_orders_url] - An API for retrieving and updating a list of insurance policy orders made by customers  
-- [Store Front][github_store_url] - UI that leverages both of the above APIs to allow users to intelligently query the policies and narrow down to their best possible options
+- [User Interface][github_bot_url] - UI that leverages both of the above APIs to allow users to intelligently query the policies and narrow down to their best possible options. Also includes a bot to interact with the visitor through a chat interface.
+- [Dashboard][github_dashboard_url] - A user interface showing an history of the bot chats for further analysis.
 
 ## Create the toolchain
 
@@ -30,7 +31,8 @@ The toolchain is preconfigured for:
 * [IBM Bluemix Garage Method][garage_method_url]
 
 <!--Links-->
-[github_store_url]: https://github.com/IBM-Bluemix/insurance-store-front
+[github_bot_url]: https://github.com/IBM-Bluemix/insurance-bot
+[github_dashboard_url]: https://github.com/IBM-Bluemix/insurance-bot-dashboard
 [github_catalog_url]: https://github.com/IBM-Bluemix/insurance-catalog
 [github_orders_url]: https://github.com/IBM-Bluemix/insurance-orders
 [toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
