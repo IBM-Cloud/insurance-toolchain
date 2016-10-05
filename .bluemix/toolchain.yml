@@ -5,42 +5,37 @@ version: 1.0
 image: data:image/png;base64,$file(toolchain.png,base64)
 required:
  - deploy
- - github
 
 # Github repos
 catalog-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.catalog-api-repo_name}}"
-    repo_url: "{{github.parameters.catalog-api-repo_url}}"
+    repo_name: "cloudco-insurance-catalog"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-catalog"
     type: clone
     has_issues: true
-  hidden: [form, description]
 
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.orders-api-repo_name}}"
-    repo_url: "{{github.parameters.orders-api-repo_url}}"
+    repo_name: "cloudco-insurance-orders"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-orders"
     type: clone
     has_issues: true
-  hidden: [form, description]
 
 ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.ui-repo_name}}"
-    repo_url: "{{github.parameters.ui-repo_url}}"
+    repo_name: cloudco-insurance-bot"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-bot"
     type: clone
     has_issues: true
-  hidden: [form, description]
 
 dashboard-repo:
-  schema: dashboard.github.json
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.dashboard-repo_name}}"
-    repo_url: "{{github.parameters.dashboard-repo_url}}"
+    repo_name: "cloudco-insurance-dashboard"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-bot-dashboard"
     type: clone
     has_issues: true
 
@@ -111,20 +106,6 @@ dashboard-build-dev:
       execute: true
     services: ["dashboard-repo"]
   hidden: [form, description]
-
-#Github
-github:
-  schema: github.json
-  service-category: githubpublic
-  parameters:
-    catalog-api-repo_name: "cloudco-insurance-catalog"
-    catalog-api-repo_url: https://github.com/IBM-Bluemix/insurance-catalog
-    orders-api-repo_name: "cloudco-insurance-orders"
-    orders-api-repo_url: https://github.com/IBM-Bluemix/insurance-orders
-    ui-repo_name: "cloudco-insurance-bot"
-    ui-repo_url: https://github.com/IBM-Bluemix/insurance-bot
-    dashboard-repo_name: "cloudco-insurance-dashboard"
-    dashboard-repo_url: https://github.com/IBM-Bluemix/insurance-bot-dashboard
 
 #Web IDE
 webide:
