@@ -3,7 +3,7 @@ stages:
 - name: BUILD
   inputs:
   - type: git
-    branch: new-toolchain
+    branch: dev
     service: ${REPO}
   triggers:
   - type: commit
