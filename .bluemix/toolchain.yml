@@ -58,6 +58,24 @@ ui-build-dev:
     services: ["ui-repo"]
   hidden: [form, description]
 
+ui-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "bot (prod)"
+    configuration:
+      content: $file(ui.pipeline.prod.yml)
+      env:
+        REPO: "ui-repo"
+        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+        ORDERS_APP_NAME: "{{deploy.parameters.orders-app-name}}"
+      execute: true
+    services: ["ui-repo"]
+  hidden: [form, description]
+
 catalog-api-build-dev:
   service_id: pipeline
   parameters:
@@ -67,6 +85,22 @@ catalog-api-build-dev:
       env:
         REPO: "catalog-api-repo"
         CF_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["catalog-api-repo"]
+  hidden: [form, description]
+
+catalog-api-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "catalog (prod)"
+    configuration:
+      content: $file(catalog-api.pipeline.prod.yml)
+      env:
+        REPO: "catalog-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
@@ -91,6 +125,23 @@ orders-api-build-dev:
     services: ["orders-api-repo"]
   hidden: [form, description]
 
+orders-api-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "orders (prod)"
+    configuration:
+      content: $file(order-api.pipeline.prod.yml)
+      env:
+        REPO: "orders-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+      execute: true
+    services: ["orders-api-repo"]
+  hidden: [form, description]
+
 dashboard-build-dev:
   service_id: pipeline
   parameters:
@@ -100,6 +151,22 @@ dashboard-build-dev:
       env:
         REPO: "dashboard-repo"
         CF_APP_NAME: "dev-{{deploy.parameters.dashboard-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["dashboard-repo"]
+  hidden: [form, description]
+
+dashboard-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "dashboard (prod)"
+    configuration:
+      content: $file(dashboard.pipeline.prod.yml)
+      env:
+        REPO: "dashboard-repo"
+        CF_APP_NAME: "{{deploy.parameters.dashboard-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"

@@ -1,6 +1,5 @@
 # CloudCo Toolchain
 
-
 Get started with this sample, which is an online insurance application that consists of three microservices:  
 - [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  
 - [Orders][github_orders_url] - An API for retrieving and updating a list of insurance policy orders made by customers  
@@ -9,8 +8,13 @@ Get started with this sample, which is an online insurance application that cons
 
 ## Create the toolchain
 
-**To get started, click this button:**  
-[![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git&branch=new-toolchain)
+1. Ensure you have 3.2GB of free memory and space for 4 additional services in your organization.
+
+1. It is recommended to create a new space in your organization. This helps grouping the apps and services together in the console.
+
+1. **To get started, click this button:**
+
+  [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git&branch=new-toolchain)
 
 The toolchain is preconfigured for:
 
