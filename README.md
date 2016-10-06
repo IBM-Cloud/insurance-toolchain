@@ -1,6 +1,6 @@
-# CloudCo Insurance Toolchain
+# Cloud Insurance Co. - Toolchain
 
-This toolchain deploys the [CloudCo Insurance](https://github.com/IBM-Bluemix/cloudco-insurance) project.
+This toolchain deploys the [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) project.
 
 Get started with this project, which is an online insurance application that consists of three microservices:  
 - [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  

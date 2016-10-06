@@ -1,5 +1,5 @@
 ---
-name: "Cloud-native Toolchain for Microservices (CloudCo Insurance)"
+name: "Cloud-native Toolchain for Microservices (Cloud Insurance Co.)"
 description: "With this cloud-native toolchain, you use a sample to create an online insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing.\n\nTo get started, click **Create**."
 version: 1.0
 image: data:image/png;base64,$file(toolchain.png,base64)
