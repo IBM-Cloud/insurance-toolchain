@@ -1,0 +1,49 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: dev
+    service: ${REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CATALOG_APP_NAME
+    value: ${CATALOG_APP_NAME}
+  jobs:
+  - name: Deploy to dev
+    type: deployer
+    target:
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      # Create CF services
+      cf create-service cloudantNoSQLDB Lite dev-insurance-policy-db
+      # Deploy app
+      cf push $CF_APP -n $CF_APP --no-start
+      # Set app's env vars
+      domain=".mybluemix.net"
+      case "${REGION_ID}" in
+        ibm:yp:eu-gb)
+          domain=".eu-gb.mybluemix.net"
+        ;;
+        ibm:yp:au-syd)
+        domain=".au-syd.mybluemix.net"
+        ;;
+      esac
+      cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
+      cf bind-service $CF_APP dev-insurance-policy-db
+      cf start $CF_APP

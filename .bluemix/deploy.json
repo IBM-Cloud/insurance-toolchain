@@ -1,19 +1,19 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
-    "description": "Feb Demo Microservices Stage Schema",
+    "description": "",
     "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.",
     "type": "object",
     "properties": {
-        "region": {
+        "selected-region": {
             "description": "The bluemix region",
             "type": "string"
         },
-        "organization": {
+        "selected-organization": {
             "description": "The bluemix org",
             "type": "string"
         },
-       "space": {
+       "selected-space": {
             "description": "The bluemix space",
             "type": "string"
         },
@@ -21,21 +21,31 @@
             "description": "orders app name",
             "type": "string"
         },
-       "catalog-app-name": {
+        "catalog-app-name": {
             "description": "catalog app name",
             "type": "string"
         },
-       "ui-app-name": {
+        "ui-app-name": {
             "description": "ui app name",
+            "type": "string"
+        },
+        "dashboard-app-name": {
+            "description": "dashboard app name",
             "type": "string"
         }
     },
-    "required": ["region", "organization", "space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "required": [
+      "selected-region", "selected-organization", "selected-space",
+      "orders-app-name",
+      "catalog-app-name",
+      "ui-app-name",
+      "dashboard-app-name"
+    ],
     "form": [
        {
           "type": "validator",
           "url": "/devops/setup/bm-helper/helper.html"
-       },        
+       },
        {
           "type": "text",
           "readonly": false,
@@ -53,6 +63,12 @@
           "readonly": false,
           "title": "UI App Name",
           "key": "ui-app-name"
+        },
+        {
+          "type": "text",
+          "readonly": false,
+          "title": "Dashboard App Name",
+          "key": "dashboard-app-name"
         },
         {
             "type": "table",
@@ -73,15 +89,15 @@
                 },
                 {
                   "type": "select",
-                  "key": "region"
+                  "key": "selected-region"
                 },
                 {
                   "type": "select",
-                  "key": "organization"
+                  "key": "selected-organization"
                 },
                 {
                   "type": "select",
-                  "key": "space",
+                  "key": "selected-space",
                   "readonly": false
                 }
             ]

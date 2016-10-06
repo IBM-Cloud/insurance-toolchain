@@ -1,107 +1,178 @@
 ---
-name: "Cloud-native Toolchain for Microservices (Online Insurance)"
-description: "With this cloud-native toolchain, you use a sample to create an online insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and deployment risk analytics.\n\nTo get started, click **Create**."
-version: 0.2
-image: data:image/png;base64,$file(dra-toolchain2.png,base64)
+name: "Cloud-native Toolchain for Microservices (CloudCo Insurance)"
+description: "With this cloud-native toolchain, you use a sample to create an online insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing.\n\nTo get started, click **Create**."
+version: 1.0
+image: data:image/png;base64,$file(toolchain.png,base64)
 required:
  - deploy
- - github
 
 # Github repos
 catalog-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.catalog-api-repo_name}}"
-    repo_url: "{{github.parameters.catalog-api-repo_url}}"
+    repo_name: "cloudco-insurance-catalog"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-catalog"
     type: clone
-    has_issues: false
-  hidden: [form, description]
+    has_issues: true
 
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.orders-api-repo_name}}"
-    repo_url: "{{github.parameters.orders-api-repo_url}}"
+    repo_name: "cloudco-insurance-orders"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-orders"
     type: clone
-    has_issues: false
-  hidden: [form, description]
+    has_issues: true
 
 ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.ui-repo_name}}"
-    repo_url: "{{github.parameters.ui-repo_url}}"
+    repo_name: "cloudco-insurance-bot"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-bot"
     type: clone
     has_issues: true
-  hidden: [form, description]
+
+dashboard-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "cloudco-insurance-dashboard"
+    repo_url: "https://github.com/IBM-Bluemix/insurance-bot-dashboard"
+    type: clone
+    has_issues: true
 
 # Pipelines
-ui-build:
+ui-build-dev:
   service_id: pipeline
   parameters:
-    name: "insurance-store-front-{{name}}"
-    ui-pipeline: true
+    name: "bot (dev)"
     configuration:
-      content: $file(ui.pipeline.yml)
+      content: $file(ui.pipeline.dev.yml)
       env:
-        SAUCE_LABS: "test"
-        UI_REPO: "ui-repo"
+        REPO: "ui-repo"
+        CF_APP_NAME: "dev-{{deploy.parameters.ui-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
+        ORDERS_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
+      execute: true
+    services: ["ui-repo"]
+  hidden: [form, description]
+
+ui-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "bot (prod)"
+    configuration:
+      content: $file(ui.pipeline.prod.yml)
+      env:
+        REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+        ORDERS_APP_NAME: "{{deploy.parameters.orders-app-name}}"
       execute: true
-    services: ["ui-repo", "test"]
+    services: ["ui-repo"]
   hidden: [form, description]
 
-catalog-api-build:
+catalog-api-build-dev:
   service_id: pipeline
   parameters:
-    name: "insurance-catalog-{{name}}"
+    name: "catalog (dev)"
     configuration:
-      content: $file(catalog-api.pipeline.yml)
+      content: $file(catalog-api.pipeline.dev.yml)
       env:
-        SAUCE_LABS: "test"
-        CATALOG_API_REPO: "catalog-api-repo"
+        REPO: "catalog-api-repo"
+        CF_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["catalog-api-repo"]
+  hidden: [form, description]
+
+catalog-api-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "catalog (prod)"
+    configuration:
+      content: $file(catalog-api.pipeline.prod.yml)
+      env:
+        REPO: "catalog-api-repo"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
       execute: true
-    services: ["catalog-api-repo", "test"]
+    services: ["catalog-api-repo"]
   hidden: [form, description]
 
-orders-api-build:
+orders-api-build-dev:
   service_id: pipeline
   parameters:
-    name: "insurance-orders-{{name}}"
+    name: "orders (dev)"
     configuration:
-      content: $file(order-api.pipeline.yml)
+      content: $file(order-api.pipeline.dev.yml)
       env:
-        SAUCE_LABS: "test"
-        ORDER_API_REPO: "orders-api-repo"
-        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.space}}"
-        ORG_NAME: "{{deploy.parameters.organization}}"
-        REGION_ID: "{{deploy.parameters.region}}"
+        REPO: "orders-api-repo"
+        CF_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
       execute: true
-    services: ["orders-api-repo", "test"]
+    services: ["orders-api-repo"]
   hidden: [form, description]
 
-#Deploy Risk Analytics
-dra:
-  service_id: draservicebroker
-#  include: dra.yml
+orders-api-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "orders (prod)"
+    configuration:
+      content: $file(order-api.pipeline.prod.yml)
+      env:
+        REPO: "orders-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+      execute: true
+    services: ["orders-api-repo"]
+  hidden: [form, description]
 
-#Sauce Labs
-test:
-  service_id: saucelabs
-  include: saucelabs.yml
+dashboard-build-dev:
+  service_id: pipeline
+  parameters:
+    name: "dashboard (dev)"
+    configuration:
+      content: $file(dashboard.pipeline.dev.yml)
+      env:
+        REPO: "dashboard-repo"
+        CF_APP_NAME: "dev-{{deploy.parameters.dashboard-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["dashboard-repo"]
+  hidden: [form, description]
 
-#PagerDuty
-alerting:
-  service_id: pagerduty
-  include: pagerduty.yml
+dashboard-build-prod:
+  service_id: pipeline
+  parameters:
+    name: "dashboard (prod)"
+    configuration:
+      content: $file(dashboard.pipeline.prod.yml)
+      env:
+        REPO: "dashboard-repo"
+        CF_APP_NAME: "{{deploy.parameters.dashboard-app-name}}"
+        SPACE_NAME: "{{deploy.parameters.selected-space}}"
+        ORG_NAME: "{{deploy.parameters.selected-organization}}"
+        REGION_ID: "{{deploy.parameters.selected-region}}"
+      execute: true
+    services: ["dashboard-repo"]
+  hidden: [form, description]
 
 #Web IDE
 webide:
@@ -112,21 +183,10 @@ deploy:
   schema: deploy.json
   service-category: pipeline
   parameters:
-    region: "{{region}}"
-    organization: "{{organization}}"
-    space: "{{space}}"
+    selected-region: "{{region}}"
+    selected-organization: "{{organization}}"
+    selected-space: "{{space}}"
     orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
     catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
-
-#Github
-github:
-  schema: github.json
-  service-category: githubpublic
-  parameters:
-    catalog-api-repo_name: "insurance-catalog-{{name}}"
-    catalog-api-repo_url: https://github.com/IBM-Bluemix/insurance-catalog
-    orders-api-repo_name: "insurance-orders-{{name}}"
-    orders-api-repo_url: https://github.com/IBM-Bluemix/insurance-orders
-    ui-repo_name: "insurance-store-front-{{name}}"
-    ui-repo_url: https://github.com/IBM-Bluemix/insurance-store-front
+    dashboard-app-name: "{{dashboard-repo.parameters.repo_name}}"
