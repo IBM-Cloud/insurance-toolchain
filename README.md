@@ -16,6 +16,11 @@ Get started with this sample, which is an online insurance application that cons
 
   [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com//IBM-Bluemix/insurance-toolchain.git&branch=new-toolchain)
 
+  Clicking it will:
+  * **create 4 GitHub repositories** with the required source code for all the application components;
+  * **instantiate the toolchain** in your Bluemix org and space;
+  * **trigger the toolchain**, thereby deploying the dev and master branches for all application components.
+
 The toolchain is preconfigured for:
 
 - issue tracking
@@ -27,7 +32,8 @@ The toolchain is preconfigured for:
 ![Toolchain template steps](./.bluemix/toolchain.png)
 
 ---
-###Learn more
+
+### Learn more
 
 * Bluemix DevOps Services: https://new-console.ng.bluemix.net/devops
 * Documentation on [Bluemix Toolchains][toolchains_overview_url]
