@@ -33,7 +33,7 @@ stages:
       # Create CF services
       cf create-service cloudantNoSQLDB Lite dev-insurance-policy-db
       # Deploy app
-      cf push $CF_APP -n $CF_APP --no-start
+      cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
       # Set app's env vars
       domain=".mybluemix.net"
       case "${REGION_ID}" in
@@ -45,5 +45,4 @@ stages:
         ;;
       esac
       cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
-      cf bind-service $CF_APP dev-insurance-policy-db
       cf start $CF_APP
