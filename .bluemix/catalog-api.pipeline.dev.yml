@@ -31,6 +31,5 @@ stages:
       cf create-service cloudantNoSQLDB Lite dev-insurance-policy-db
       cf create-service tradeoff_analytics standard insurance-tradeoff-analytics
       # Deploy app
-      cf push $CF_APP -n $CF_APP --no-start
-      cf bind-service $CF_APP dev-insurance-policy-db
+      cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
       cf start $CF_APP
