@@ -38,9 +38,7 @@ stages:
       cf create-service conversation standard insurance-bot-conversation
       cf create-service compose-for-mongodb Standard dev-insurance-bot-db
       # Deploy app
-      cf push $CF_APP -n $CF_APP --no-start
-      cf bind-service $CF_APP insurance-bot-conversation
-      cf bind-service $CF_APP dev-insurance-bot-db
+      cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
       # Set app's env vars
       domain=".mybluemix.net"
       case "${REGION_ID}" in

@@ -49,8 +49,6 @@ stages:
       esac
       if ! cf app $CF_APP; then
         cf push $CF_APP -n $CF_APP --no-start
-        cf bind-service $CF_APP insurance-bot-conversation
-        cf bind-service $CF_APP insurance-bot-db
         cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
         cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
         cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
@@ -70,8 +68,6 @@ stages:
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
         cf push $CF_APP -n $CF_APP --no-start
-        cf bind-service $CF_APP insurance-bot-conversation
-        cf bind-service $CF_APP insurance-bot-db
         cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
         cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
         cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
