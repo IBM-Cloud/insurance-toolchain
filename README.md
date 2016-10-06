@@ -1,4 +1,4 @@
-# CloudCo Toolchain
+# CloudCo Insurance Toolchain
 
 Get started with this sample, which is an online insurance application that consists of three microservices:  
 - [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  
