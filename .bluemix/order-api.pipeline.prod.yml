@@ -21,7 +21,7 @@ stages:
   - name: CATALOG_APP_NAME
     value: ${CATALOG_APP_NAME}
   jobs:
-  - name: Deploy to dev
+  - name: Blue/Green Deploy
     type: deployer
     target:
       region_id: ${REGION_ID}
