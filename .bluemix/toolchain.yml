@@ -154,6 +154,7 @@ dashboard-build-dev:
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
+        UI_APP_NAME: "dev-{{deploy.parameters.ui-app-name}}"
       execute: true
     services: ["dashboard-repo"]
   hidden: [form, description]
@@ -170,6 +171,7 @@ dashboard-build-prod:
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
+        UI_APP_NAME: "{{deploy.parameters.ui-app-name}}"
       execute: true
     services: ["dashboard-repo"]
   hidden: [form, description]

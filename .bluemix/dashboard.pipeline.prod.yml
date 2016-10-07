@@ -27,6 +27,9 @@ stages:
     job: Build
   triggers:
   - type: stage
+  properties:
+  - name: UI_APP_NAME
+    value: ${UI_APP_NAME}
   jobs:
   - name: Blue/Green Deploy
     type: deployer
@@ -40,10 +43,21 @@ stages:
       # Create CF services
       cf create-service compose-for-mongodb Standard insurance-bot-db
       cf create-service tone_analyzer standard insurance-tone_analyzer
+      # Set app's env vars
+      domain=".mybluemix.net"
+      case "${REGION_ID}" in
+        ibm:yp:eu-gb)
+          domain=".eu-gb.mybluemix.net"
+        ;;
+        ibm:yp:au-syd)
+        domain=".au-syd.mybluemix.net"
+        ;;
+      esac
       if ! cf app $CF_APP; then
         cf push $CF_APP -n $CF_APP --no-start
         cf bind-service $CF_APP insurance-bot-db
         cf bind-service $CF_APP insurance-tone_analyzer
+        cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
         cf start $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
@@ -62,6 +76,7 @@ stages:
         cf push $CF_APP -n $CF_APP --no-start
         cf bind-service $CF_APP insurance-bot-db
         cf bind-service $CF_APP insurance-tone_analyzer
+        cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
         cf start $CF_APP
         cf delete $OLD_CF_APP -f
       fi

@@ -27,6 +27,9 @@ stages:
     job: Build
   triggers:
   - type: stage
+  properties:
+  - name: UI_APP_NAME
+    value: ${UI_APP_NAME}
   jobs:
   - name: Deploy to dev
     type: deployer
@@ -42,4 +45,15 @@ stages:
       cf create-service tone_analyzer standard insurance-tone_analyzer
       # Deploy app
       cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
+      # Set app's env vars
+      domain=".mybluemix.net"
+      case "${REGION_ID}" in
+        ibm:yp:eu-gb)
+          domain=".eu-gb.mybluemix.net"
+        ;;
+        ibm:yp:au-syd)
+        domain=".au-syd.mybluemix.net"
+        ;;
+      esac
+      cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
       cf start $CF_APP
