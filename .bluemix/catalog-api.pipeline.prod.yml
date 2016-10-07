@@ -31,7 +31,9 @@ stages:
       cf create-service cloudantNoSQLDB Lite insurance-policy-db
       cf create-service tradeoff_analytics standard insurance-tradeoff-analytics
       if ! cf app $CF_APP; then
-        cf push $CF_APP -n $CF_APP
+        cf push $CF_APP -n $CF_APP --no-start
+        cf bind-service $CF_APP insurance-policy-db
+        cf start $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
@@ -46,6 +48,8 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP -n $CF_APP
+        cf push $CF_APP -n $CF_APP --no-start
+        cf bind-service $CF_APP insurance-policy-db
+        cf start $CF_APP
         cf delete $OLD_CF_APP -f
       fi
