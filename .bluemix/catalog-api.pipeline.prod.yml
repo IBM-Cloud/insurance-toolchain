@@ -50,5 +50,6 @@ stages:
         cf rename $CF_APP $OLD_CF_APP
         cf push $CF_APP -n $CF_APP --no-start
         cf bind-service $CF_APP insurance-policy-db
+        cf start $CF_APP
         cf delete $OLD_CF_APP -f
       fi
