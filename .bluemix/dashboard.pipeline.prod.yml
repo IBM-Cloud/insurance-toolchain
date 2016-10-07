@@ -42,6 +42,8 @@ stages:
       cf create-service tone_analyzer standard insurance-tone_analyzer
       if ! cf app $CF_APP; then
         cf push $CF_APP -n $CF_APP --no-start
+        cf bind-service $CF_APP insurance-bot-db
+        cf bind-service $CF_APP insurance-tone_analyzer
         cf start $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
@@ -58,6 +60,8 @@ stages:
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
         cf push $CF_APP -n $CF_APP --no-start
+        cf bind-service $CF_APP insurance-bot-db
+        cf bind-service $CF_APP insurance-tone_analyzer
         cf start $CF_APP
         cf delete $OLD_CF_APP -f
       fi
