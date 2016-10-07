@@ -48,6 +48,7 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP -n $CF_APP
+        cf push $CF_APP -n $CF_APP --no-start
+        cf bind-service $CF_APP insurance-policy-db
         cf delete $OLD_CF_APP -f
       fi
