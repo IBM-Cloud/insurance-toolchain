@@ -30,6 +30,8 @@ stages:
   properties:
   - name: UI_APP_NAME
     value: ${UI_APP_NAME}
+  - name: REGION_ID
+    value: ${REGION_ID}
   jobs:
   - name: Deploy to dev
     type: deployer
