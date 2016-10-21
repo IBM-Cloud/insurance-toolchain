@@ -2,11 +2,13 @@
 
 This toolchain deploys the [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) project.
 
-Get started with this project, which is an online insurance application that consists of three microservices:  
-- [Policy Catalog][github_catalog_url] - An API for retrieving and updating a catalog of insurance policies  
-- [Orders][github_orders_url] - An API for retrieving and updating a list of insurance policy orders made by customers  
-- [User Interface][github_bot_url] - UI that leverages both of the above APIs to allow users to intelligently query the policies and narrow down to their best possible options. Also includes a bot to interact with the visitor through a chat interface.
-- [Dashboard][github_dashboard_url] - A user interface showing an history of the bot chats for further analysis.
+Get started with this project, which is an online insurance application that consists of microservices:
+
+* [insurance-catalog][catalog_github_url] - An API to retrieve and update a catalog of insurance policies
+* [insurance-orders][orders_github_url] - An API to retrieve and update a list of insurance policy orders made by customers
+* [insurance-bot][bot_github_url] - UI that provides a chat bot interface for users to query their health benefits and file claims.
+* [insurance-bot-dashboard][dashboard_github_url] - A user interface showing an history of the bot chats for further analysis.
+* [insurance-bot-ios][mobile_github_url] - An iOS application for the chat bot.
 
 ## Create the toolchain
 
@@ -46,10 +48,11 @@ The toolchain is preconfigured for:
 * [IBM Bluemix Garage Method][garage_method_url]
 
 <!--Links-->
-[github_bot_url]: https://github.com/IBM-Bluemix/insurance-bot
-[github_dashboard_url]: https://github.com/IBM-Bluemix/insurance-bot-dashboard
-[github_catalog_url]: https://github.com/IBM-Bluemix/insurance-catalog
-[github_orders_url]: https://github.com/IBM-Bluemix/insurance-orders
+[bot_github_url]: https://github.com/IBM-Bluemix/insurance-bot
+[orders_github_url]: https://github.com/IBM-Bluemix/insurance-orders
+[catalog_github_url]: https://github.com/IBM-Bluemix/insurance-catalog
+[dashboard_github_url]: https://github.com/IBM-Bluemix/insurance-bot-dashboard
+[mobile_github_url]: https://github.com/IBM-Bluemix/insurance-bot-ios
 [toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
 [garage_method_url]: https://www.ibm.com/devops/method
