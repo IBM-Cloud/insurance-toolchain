@@ -57,8 +57,6 @@ stages:
       esac
       if ! cf app $CF_APP; then
         cf push $CF_APP -n $CF_APP --no-start
-        cf bind-service $CF_APP insurance-bot-db
-        cf bind-service $CF_APP insurance-tone_analyzer
         cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
         cf start $CF_APP
       else
@@ -76,8 +74,6 @@ stages:
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
         cf push $CF_APP -n $CF_APP --no-start
-        cf bind-service $CF_APP insurance-bot-db
-        cf bind-service $CF_APP insurance-tone_analyzer
         cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
         cf start $CF_APP
         cf delete $OLD_CF_APP -f
