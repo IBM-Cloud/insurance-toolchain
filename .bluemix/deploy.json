@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "MicroServices Deploy Stage",
     "description": "",
-    "longDescription": "<b>The Delivery Pipeline</b><br/> for Devops Services allows you to automate your continuous deployment setup. To avoid conflicts, make sure to use unique application names. We recommend to use a common prefix like your name or initials.",
+    "longDescription": "The Delivery Pipeline for Devops Services allows you to automate your continuous deployment setup.<br/>To avoid conflicts, make sure to use unique application names. We recommend to use a common prefix like your name or initials.",
     "type": "object",
     "properties": {
         "selected-region": {
