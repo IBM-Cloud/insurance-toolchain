@@ -7,6 +7,11 @@ stages:
     service: ${REPO}
   triggers:
   - type: commit
+  properties:
+  - name: UI_APP_NAME
+    value: ${UI_APP_NAME}
+  - name: REGION_ID
+    value: ${REGION_ID}
   jobs:
   - name: Build
     type: builder
@@ -19,6 +24,17 @@ stages:
       nvm install 4.4
       npm install npm@latest -g
       npm install
+      # Set app's env vars
+      domain=".mybluemix.net"
+      case "${REGION_ID}" in
+        ibm:yp:eu-gb)
+          domain=".eu-gb.mybluemix.net"
+        ;;
+        ibm:yp:au-syd)
+        domain=".au-syd.mybluemix.net"
+        ;;
+      esac
+      export SOCKET_URL=https://$UI_APP_NAME$domain
       npm run deploy:prod
       rm -rf node_modules
 - name: DEPLOY
@@ -28,11 +44,6 @@ stages:
     job: Build
   triggers:
   - type: stage
-  properties:
-  - name: UI_APP_NAME
-    value: ${UI_APP_NAME}
-  - name: REGION_ID
-    value: ${REGION_ID}
   jobs:
   - name: Blue/Green Deploy
     type: deployer
@@ -46,20 +57,8 @@ stages:
       # Create CF services
       cf create-service compose-for-mongodb Standard dev-insurance-bot-db
       cf create-service tone_analyzer standard insurance-tone_analyzer
-      # Set app's env vars
-      domain=".mybluemix.net"
-      case "${REGION_ID}" in
-        ibm:yp:eu-gb)
-          domain=".eu-gb.mybluemix.net"
-        ;;
-        ibm:yp:au-syd)
-        domain=".au-syd.mybluemix.net"
-        ;;
-      esac
       if ! cf app $CF_APP; then
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
-        cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
-        cf start $CF_APP
+        cf push $CF_APP -n $CF_APP -f dev-manifest.yml
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
@@ -74,8 +73,6 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
-        cf set-env $CF_APP SOCKET_URL https://$UI_APP_NAME$domain
-        cf start $CF_APP
+        cf push $CF_APP -n $CF_APP -f dev-manifest.yml
         cf delete $OLD_CF_APP -f
       fi
