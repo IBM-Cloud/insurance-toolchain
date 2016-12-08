@@ -36,8 +36,6 @@ The toolchain is preconfigured for:
 - unit and code coverage testing
 - blue-green deployment
 
-![Toolchain template steps](./.bluemix/toolchain.png)
-
 ---
 
 ### Learn more
