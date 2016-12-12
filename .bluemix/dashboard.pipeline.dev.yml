@@ -3,7 +3,7 @@ stages:
 - name: BUILD
   inputs:
   - type: git
-    branch: dev
+    branch: ${REPO_BRANCH}
     service: ${REPO}
   triggers:
   - type: commit
@@ -44,6 +44,9 @@ stages:
     job: Build
   triggers:
   - type: stage
+  properties:
+  - name: REPO_BRANCH
+    value: ${REPO_BRANCH}
   jobs:
   - name: Blue/Green Deploy
     type: deployer
@@ -54,11 +57,25 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      # The branch may use a custom manifest
+      MANIFEST=manifest.yml
+      if [ -f ${REPO_BRANCH}-manifest.yml ];
+        MANIFEST=${REPO_BRANCH}-manifest.yml
+      fi
+      echo "Using $MANIFEST"
+
+      # and a prefix for services if not building the master branch
+      if [ "$REPO_BRANCH" == "master" ];
+        echo "No prefix for master branch"
+      else
+        PREFIX="$REPO_BRANCH-"
+      fi
+
       # Create CF services
-      cf create-service compose-for-mongodb Standard dev-insurance-bot-db
+      cf create-service compose-for-mongodb Standard $PREFIXinsurance-bot-db
       cf create-service tone_analyzer standard insurance-tone_analyzer
       if ! cf app $CF_APP; then
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml
+        cf push $CF_APP -n $CF_APP -f $MANIFEST
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
@@ -73,6 +90,6 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml
+        cf push $CF_APP -n $CF_APP -f $MANIFEST
         cf delete $OLD_CF_APP -f
       fi
