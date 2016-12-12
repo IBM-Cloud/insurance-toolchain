@@ -1,7 +1,7 @@
 ---
 name: "Cloud-native Toolchain for Microservices (Cloud Insurance Co.)"
 description: "With this cloud-native toolchain, you use a sample to create an online insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing.\n\nTo get started, click **Create**."
-version: 1.0
+version: 2.0
 required:
  - deploy
 
@@ -39,33 +39,16 @@ dashboard-repo:
     has_issues: true
 
 # Pipelines
-ui-build-dev:
+ui-build:
   service_id: pipeline
   parameters:
-    name: "bot (dev)"
+    name: "bot ({{deploy.parameters.ui-branch-name}})"
     configuration:
       content: $file(ui.pipeline.dev.yml)
       env:
         REPO: "ui-repo"
-        CF_APP_NAME: "dev-{{deploy.parameters.ui-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-        CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
-        ORDERS_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
-      execute: true
-    services: ["ui-repo"]
-  hidden: [form, description]
-
-ui-build-prod:
-  service_id: pipeline
-  parameters:
-    name: "bot (prod)"
-    configuration:
-      content: $file(ui.pipeline.prod.yml)
-      env:
-        REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        REPO_BRANCH: "{{deploy.parameters.ui-branch-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
@@ -75,30 +58,15 @@ ui-build-prod:
     services: ["ui-repo"]
   hidden: [form, description]
 
-catalog-api-build-dev:
+catalog-api-build:
   service_id: pipeline
   parameters:
-    name: "catalog (dev)"
+    name: "catalog ({{deploy.parameters.catalog-branch-name}})"
     configuration:
       content: $file(catalog-api.pipeline.dev.yml)
       env:
         REPO: "catalog-api-repo"
-        CF_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["catalog-api-repo"]
-  hidden: [form, description]
-
-catalog-api-build-prod:
-  service_id: pipeline
-  parameters:
-    name: "catalog (prod)"
-    configuration:
-      content: $file(catalog-api.pipeline.prod.yml)
-      env:
-        REPO: "catalog-api-repo"
+        REPO_BRANCH: "{{deploy.parameters.catalog-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -107,31 +75,15 @@ catalog-api-build-prod:
     services: ["catalog-api-repo"]
   hidden: [form, description]
 
-orders-api-build-dev:
+orders-api-build:
   service_id: pipeline
   parameters:
-    name: "orders (dev)"
+    name: "orders ({{deploy.parameters.orders-branch-name}})"
     configuration:
       content: $file(order-api.pipeline.dev.yml)
       env:
         REPO: "orders-api-repo"
-        CF_APP_NAME: "dev-{{deploy.parameters.orders-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-        CATALOG_APP_NAME: "dev-{{deploy.parameters.catalog-app-name}}"
-      execute: true
-    services: ["orders-api-repo"]
-  hidden: [form, description]
-
-orders-api-build-prod:
-  service_id: pipeline
-  parameters:
-    name: "orders (prod)"
-    configuration:
-      content: $file(order-api.pipeline.prod.yml)
-      env:
-        REPO: "orders-api-repo"
+        REPO_BRANCH: "{{deploy.parameters.orders-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -141,31 +93,15 @@ orders-api-build-prod:
     services: ["orders-api-repo"]
   hidden: [form, description]
 
-dashboard-build-dev:
+dashboard-build:
   service_id: pipeline
   parameters:
-    name: "dashboard (dev)"
+    name: "dashboard ({{deploy.parameters.dashboard-branch-name}})"
     configuration:
       content: $file(dashboard.pipeline.dev.yml)
       env:
         REPO: "dashboard-repo"
-        CF_APP_NAME: "dev-{{deploy.parameters.dashboard-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-        UI_APP_NAME: "dev-{{deploy.parameters.ui-app-name}}"
-      execute: true
-    services: ["dashboard-repo"]
-  hidden: [form, description]
-
-dashboard-build-prod:
-  service_id: pipeline
-  parameters:
-    name: "dashboard (prod)"
-    configuration:
-      content: $file(dashboard.pipeline.prod.yml)
-      env:
-        REPO: "dashboard-repo"
+        REPO_BRANCH: "{{deploy.parameters.dashboard-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.dashboard-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -191,3 +127,7 @@ deploy:
     catalog-app-name: "{{name}}-catalog"
     ui-app-name: "{{name}}-webui"
     dashboard-app-name: "{{name}}-dashboard"
+    orders-branch-name: "master"
+    catalog-branch-name: "master"
+    ui-branch-name: "master"
+    dashboard-branch-name: "master"

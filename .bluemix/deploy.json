@@ -32,6 +32,22 @@
         "dashboard-app-name": {
             "description": "dashboard app name",
             "type": "string"
+        },
+        "orders-branch-name": {
+            "description": "orders branch name to deploy",
+            "type": "string"
+        },
+        "catalog-branch-name": {
+            "description": "catalog branch name to deploy",
+            "type": "string"
+        },
+        "ui-branch-name": {
+            "description": "ui branch name to deploy",
+            "type": "string"
+        },
+        "dashboard-branch-name": {
+            "description": "dashboard branch name to deploy",
+            "type": "string"
         }
     },
     "required": [
@@ -39,7 +55,11 @@
       "orders-app-name",
       "catalog-app-name",
       "ui-app-name",
-      "dashboard-app-name"
+      "dashboard-app-name",
+      "orders-branch-name",
+      "catalog-branch-name",
+      "ui-branch-name",
+      "dashboard-branch-name"
     ],
     "form": [
        {
@@ -101,6 +121,30 @@
                   "readonly": false
                 }
             ]
-        }
+        },
+        {
+           "type": "text",
+           "readonly": false,
+           "title": "Orders Branch Name",
+           "key": "orders-branch-name"
+         },
+         {
+           "type": "text",
+           "readonly": false,
+           "title": "Catalog Branch Name",
+           "key": "catalog-branch-name"
+         },
+         {
+           "type": "text",
+           "readonly": false,
+           "title": "UI Branch Name",
+           "key": "ui-branch-name"
+         },
+         {
+           "type": "text",
+           "readonly": false,
+           "title": "Dashboard Branch Name",
+           "key": "dashboard-branch-name"
+         }
     ]
 }
