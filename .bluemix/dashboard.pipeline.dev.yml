@@ -62,17 +62,19 @@ stages:
       if [ -f ${REPO_BRANCH}-manifest.yml ];
         MANIFEST=${REPO_BRANCH}-manifest.yml
       fi
-      echo "Using $MANIFEST"
+      echo "Using manifest file: $MANIFEST"
 
       # and a prefix for services if not building the master branch
       if [ "$REPO_BRANCH" == "master" ];
         echo "No prefix for master branch"
+        PREFIX=""
       else
-        PREFIX="$REPO_BRANCH-"
+        PREFIX=$REPO_BRANCH"-"
+        echo "Using prefix: $PREFIX"
       fi
 
       # Create CF services
-      cf create-service compose-for-mongodb Standard $PREFIXinsurance-bot-db
+      cf create-service compose-for-mongodb Standard ${PREFIX}insurance-bot-db
       cf create-service tone_analyzer standard insurance-tone_analyzer
       if ! cf app $CF_APP; then
         cf push $CF_APP -n $CF_APP -f $MANIFEST
