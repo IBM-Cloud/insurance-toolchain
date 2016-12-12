@@ -59,13 +59,13 @@ stages:
       #!/bin/bash
       # The branch may use a custom manifest
       MANIFEST=manifest.yml
-      if [ -f ${REPO_BRANCH}-manifest.yml ];
+      if [ -f ${REPO_BRANCH}-manifest.yml ]; then
         MANIFEST=${REPO_BRANCH}-manifest.yml
       fi
       echo "Using manifest file: $MANIFEST"
 
       # and a prefix for services if not building the master branch
-      if [ "$REPO_BRANCH" == "master" ];
+      if [ "$REPO_BRANCH" == "master" ]; then
         echo "No prefix for master branch"
         PREFIX=""
       else
