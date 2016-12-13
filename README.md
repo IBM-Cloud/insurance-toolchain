@@ -25,7 +25,7 @@ Get started with this project, which is an online insurance application that con
   Clicking it will:
   * **create 4 GitHub repositories** with the required source code for all the application components;
   * **instantiate the toolchain** in your Bluemix org and space;
-  * **trigger the toolchain**, thereby deploying the dev and master branches for all application components.
+  * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
 
 The toolchain is preconfigured for:
