@@ -44,7 +44,7 @@ ui-build:
   parameters:
     name: "bot ({{deploy.parameters.ui-branch-name}})"
     configuration:
-      content: $file(ui.pipeline.dev.yml)
+      content: $file(ui.pipeline.yml)
       env:
         REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
@@ -63,7 +63,7 @@ catalog-api-build:
   parameters:
     name: "catalog ({{deploy.parameters.catalog-branch-name}})"
     configuration:
-      content: $file(catalog-api.pipeline.dev.yml)
+      content: $file(catalog-api.pipeline.yml)
       env:
         REPO: "catalog-api-repo"
         REPO_BRANCH: "{{deploy.parameters.catalog-branch-name}}"
@@ -80,7 +80,7 @@ orders-api-build:
   parameters:
     name: "orders ({{deploy.parameters.orders-branch-name}})"
     configuration:
-      content: $file(order-api.pipeline.dev.yml)
+      content: $file(order-api.pipeline.yml)
       env:
         REPO: "orders-api-repo"
         REPO_BRANCH: "{{deploy.parameters.orders-branch-name}}"
@@ -98,7 +98,7 @@ dashboard-build:
   parameters:
     name: "dashboard ({{deploy.parameters.dashboard-branch-name}})"
     configuration:
-      content: $file(dashboard.pipeline.dev.yml)
+      content: $file(dashboard.pipeline.yml)
       env:
         REPO: "dashboard-repo"
         REPO_BRANCH: "{{deploy.parameters.dashboard-branch-name}}"

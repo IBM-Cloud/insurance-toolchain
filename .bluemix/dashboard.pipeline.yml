@@ -57,6 +57,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      
       # The branch may use a custom manifest
       MANIFEST=manifest.yml
       if [ -f ${REPO_BRANCH}-manifest.yml ]; then
