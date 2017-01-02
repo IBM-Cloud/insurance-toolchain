@@ -4,6 +4,7 @@ description: "With this cloud-native toolchain, you use a sample to create an on
 version: 2.0
 required:
  - deploy
+ - branches
 
 # Github repos
 catalog-api-repo:
@@ -42,13 +43,13 @@ dashboard-repo:
 ui-build:
   service_id: pipeline
   parameters:
-    name: "bot ({{deploy.parameters.ui-branch-name}})"
+    name: "bot ({{branches.parameters.ui-branch-name}})"
     configuration:
       content: $file(ui.pipeline.yml)
       env:
         REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        REPO_BRANCH: "{{deploy.parameters.ui-branch-name}}"
+        REPO_BRANCH: "{{branches.parameters.ui-branch-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
@@ -61,12 +62,12 @@ ui-build:
 catalog-api-build:
   service_id: pipeline
   parameters:
-    name: "catalog ({{deploy.parameters.catalog-branch-name}})"
+    name: "catalog ({{branches.parameters.catalog-branch-name}})"
     configuration:
       content: $file(catalog-api.pipeline.yml)
       env:
         REPO: "catalog-api-repo"
-        REPO_BRANCH: "{{deploy.parameters.catalog-branch-name}}"
+        REPO_BRANCH: "{{branches.parameters.catalog-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -78,12 +79,12 @@ catalog-api-build:
 orders-api-build:
   service_id: pipeline
   parameters:
-    name: "orders ({{deploy.parameters.orders-branch-name}})"
+    name: "orders ({{branches.parameters.orders-branch-name}})"
     configuration:
       content: $file(order-api.pipeline.yml)
       env:
         REPO: "orders-api-repo"
-        REPO_BRANCH: "{{deploy.parameters.orders-branch-name}}"
+        REPO_BRANCH: "{{branches.parameters.orders-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -96,12 +97,12 @@ orders-api-build:
 dashboard-build:
   service_id: pipeline
   parameters:
-    name: "dashboard ({{deploy.parameters.dashboard-branch-name}})"
+    name: "dashboard ({{branches.parameters.dashboard-branch-name}})"
     configuration:
       content: $file(dashboard.pipeline.yml)
       env:
         REPO: "dashboard-repo"
-        REPO_BRANCH: "{{deploy.parameters.dashboard-branch-name}}"
+        REPO_BRANCH: "{{branches.parameters.dashboard-branch-name}}"
         CF_APP_NAME: "{{deploy.parameters.dashboard-app-name}}"
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
@@ -127,6 +128,13 @@ deploy:
     catalog-app-name: "{{name}}-catalog"
     ui-app-name: "{{name}}-webui"
     dashboard-app-name: "{{name}}-dashboard"
+
+#Branch selection
+branches:
+  schema:
+    $ref: branches.json
+  service-category: pipeline
+  parameters:
     orders-branch-name: "master"
     catalog-branch-name: "master"
     ui-branch-name: "master"

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Branches to deploy",
+  "description": "Branches to deploy",
+  "longDescription": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev.",
+  "type": "object",
+  "properties": {
+    "orders-branch-name": {
+      "description": "orders branch name to deploy",
+      "type": "string"
+    },
+    "catalog-branch-name": {
+      "description": "catalog branch name to deploy",
+      "type": "string"
+    },
+    "ui-branch-name": {
+      "description": "ui branch name to deploy",
+      "type": "string"
+    },
+    "dashboard-branch-name": {
+      "description": "dashboard branch name to deploy",
+      "type": "string"
+    }
+  },
+  "required": [
+    "orders-branch-name",
+    "catalog-branch-name",
+    "ui-branch-name",
+    "dashboard-branch-name"
+  ],
+  "form": [
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Orders Branch Name",
+      "key": "orders-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Catalog Branch Name",
+      "key": "catalog-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "UI Branch Name",
+      "key": "ui-branch-name"
+    },
+    {
+      "type": "text",
+      "readonly": false,
+      "title": "Dashboard Branch Name",
+      "key": "dashboard-branch-name"
+    }
+  ]
+}
