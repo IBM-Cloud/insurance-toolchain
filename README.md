@@ -12,7 +12,7 @@ Get started with this project, which is an online insurance application that con
 
 ## Create the toolchain
 
-1. Ensure you have 3.2GB of free memory and space for 4 additional services in your organization.
+1. Ensure you have 2GB of free memory and space for 5 additional services in your organization.
 
 1. It is recommended to create a new space in your organization. This helps grouping the apps and services together in the console.
 
