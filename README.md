@@ -8,7 +8,8 @@ Get started with this project, which is an online insurance application that con
 * [insurance-orders][orders_github_url] - An API to retrieve and update a list of insurance policy orders made by customers
 * [insurance-bot][bot_github_url] - UI that provides a chat bot interface for users to query their health benefits and file claims.
 * [insurance-bot-dashboard][dashboard_github_url] - A user interface showing an history of the bot chats for further analysis.
-* [insurance-bot-ios][mobile_github_url] - An iOS application for the chat bot.
+* [insurance-bot-ios][ios_github_url] - An iOS application for the chat bot.
+* [insurance-bot-android][android_github_url] - An Android application for the chat bot.
 
 ## Create the toolchain
 
@@ -50,7 +51,8 @@ The toolchain is preconfigured for:
 [orders_github_url]: https://github.com/IBM-Bluemix/insurance-orders
 [catalog_github_url]: https://github.com/IBM-Bluemix/insurance-catalog
 [dashboard_github_url]: https://github.com/IBM-Bluemix/insurance-bot-dashboard
-[mobile_github_url]: https://github.com/IBM-Bluemix/insurance-bot-ios
+[ios_github_url]: https://github.com/IBM-Bluemix/insurance-bot-ios
+[android_github_url]: https://github.com/IBM-Bluemix/insurance-bot-android
 [toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
 [garage_method_url]: https://www.ibm.com/devops/method
