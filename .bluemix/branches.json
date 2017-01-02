@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Branches to deploy",
   "description": "Branches to deploy",
-  "longDescription": "ZZ Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev.",
+  "longDescription": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev.",
   "type": "object",
   "properties": {
     "orders-branch-name": {
