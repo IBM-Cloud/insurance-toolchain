@@ -3,7 +3,7 @@ stages:
 - name: BUILD
   inputs:
   - type: git
-    branch: dev
+    branch: ${REPO_BRANCH}
     service: ${REPO}
   triggers:
   - type: commit
@@ -18,6 +18,8 @@ stages:
   triggers:
   - type: stage
   properties:
+  - name: REPO_BRANCH
+    value: ${REPO_BRANCH}
   - name: CATALOG_APP_NAME
     value: ${CATALOG_APP_NAME}
   - name: ORDERS_APP_NAME
@@ -36,9 +38,26 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+
+      # The branch may use a custom manifest
+      MANIFEST=manifest.yml
+      if [ -f ${REPO_BRANCH}-manifest.yml ]; then
+        MANIFEST=${REPO_BRANCH}-manifest.yml
+      fi
+      echo "Using manifest file: $MANIFEST"
+
+      # and a prefix for services if not building the master branch
+      if [ "$REPO_BRANCH" == "master" ]; then
+        echo "No prefix for master branch"
+        PREFIX=""
+      else
+        PREFIX=$REPO_BRANCH"-"
+        echo "Using prefix: $PREFIX"
+      fi
+
       # Create CF services
       cf create-service conversation standard insurance-bot-conversation
-      cf create-service compose-for-mongodb Standard dev-insurance-bot-db
+      cf create-service compose-for-mongodb Standard ${PREFIX}insurance-bot-db
       # Set app's env vars
       domain=".mybluemix.net"
       case "${REGION_ID}" in
@@ -50,7 +69,7 @@ stages:
         ;;
       esac
       if ! cf app $CF_APP; then
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
+        cf push $CF_APP -n $CF_APP -f $MANIFEST --no-start
         cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
         cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
         cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
@@ -69,7 +88,7 @@ stages:
         set -e
         trap rollback ERR
         cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP -n $CF_APP -f dev-manifest.yml --no-start
+        cf push $CF_APP -n $CF_APP -f $MANIFEST --no-start
         cf set-env $CF_APP CATALOG_URL https://$CATALOG_APP_NAME$domain
         cf set-env $CF_APP ORDERS_URL https://$ORDERS_APP_NAME$domain
         cf set-env $CF_APP CONVERSATION_WORKSPACE $CONVERSATION_WORKSPACE
