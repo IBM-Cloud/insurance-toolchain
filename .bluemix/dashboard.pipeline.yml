@@ -21,7 +21,7 @@ stages:
       npm config delete prefix
       curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
       . ~/.nvm/nvm.sh
-      nvm install 4.4
+      nvm install 6.7.0
       npm install npm@latest -g
       npm install
       # Set app's env vars
@@ -57,7 +57,7 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      
+
       # The branch may use a custom manifest
       MANIFEST=manifest.yml
       if [ -f ${REPO_BRANCH}-manifest.yml ]; then
