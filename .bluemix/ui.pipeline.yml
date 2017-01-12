@@ -41,19 +41,13 @@ stages:
 
       # The branch may use a custom manifest
       MANIFEST=manifest.yml
+      PREFIX=""
       if [ -f ${REPO_BRANCH}-manifest.yml ]; then
         MANIFEST=${REPO_BRANCH}-manifest.yml
+        PREFIX=$REPO_BRANCH"-"
       fi
       echo "Using manifest file: $MANIFEST"
-
-      # and a prefix for services if not building the master branch
-      if [ "$REPO_BRANCH" == "master" ]; then
-        echo "No prefix for master branch"
-        PREFIX=""
-      else
-        PREFIX=$REPO_BRANCH"-"
-        echo "Using prefix: $PREFIX"
-      fi
+      echo "Using prefix: $PREFIX"
 
       # Create CF services
       cf create-service conversation standard insurance-bot-conversation
