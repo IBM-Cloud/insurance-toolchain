@@ -57,7 +57,7 @@ stages:
 
       # Create CF services
       cf create-service conversation standard insurance-bot-conversation
-      cf create-service compose-for-mongodb Standard ${PREFIX}insurance-bot-db
+      cf create-service cloudantNoSQLDB Lite ${PREFIX}insurance-bot-db
       # Set app's env vars
       domain=".mybluemix.net"
       case "${REGION_ID}" in
