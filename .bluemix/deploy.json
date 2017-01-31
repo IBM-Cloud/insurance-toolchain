@@ -123,9 +123,14 @@
             ]
         },
         {
-          "type": "label",
-          "title": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev."
-        },
+ 		      "type": "table",
+ 		      "columnCount": 1,
+ 		      "widths": ["100%"],
+ 		      "items": [{
+ 			      "type": "label",
+            "title": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev."
+ 		      }]
+ 	      },
         {
           "type": "text",
           "readonly": false,
