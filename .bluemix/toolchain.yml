@@ -110,10 +110,6 @@ dashboard-build:
     services: ["dashboard-repo"]
   hidden: [form, description]
 
-#Web IDE
-webide:
-  service_id: orion
-
 #Deployment
 deploy:
   schema:
@@ -131,3 +127,7 @@ deploy:
     catalog-branch-name: "master"
     ui-branch-name: "master"
     dashboard-branch-name: "master"
+
+#Web IDE
+webide:
+  service_id: orion
