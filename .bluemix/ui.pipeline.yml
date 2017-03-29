@@ -24,8 +24,6 @@ stages:
     value: ${CATALOG_APP_NAME}
   - name: ORDERS_APP_NAME
     value: ${ORDERS_APP_NAME}
-  - name: CONVERSATION_WORKSPACE
-    value: NOT_SET
   - name: REGION_ID
     value: ${REGION_ID}
   jobs:
