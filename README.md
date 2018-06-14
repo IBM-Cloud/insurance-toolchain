@@ -13,7 +13,7 @@ Get started with this project, which is an online insurance application that con
 
 ## Create the toolchain
 
-1. Ensure you have 2GB of free memory and space for 5 additional services in your organization.
+1. Ensure you have 2GB of free memory and space for the Continuous Delivery and 4 additional services in your organization.
 
 2. It is recommended to [create a new space](https://console.bluemix.net/docs/account/orgs_spaces.html#orgsspacesusers) in your organization. This helps grouping the apps and services together in the console.
 
@@ -53,4 +53,4 @@ The toolchain is preconfigured for:
 [android_github_url]: https://github.com/IBM-Cloud/insurance-bot-android
 [toolchains_overview_url]: https://console.bluemix.net/docs/services/ContinuousDelivery/toolchains_working.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
-[garage_method_url]: https://www.ibm.com/devops/method
+[garage_method_url]: https://www.ibm.com/cloud/garage/toolchains
