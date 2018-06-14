@@ -9,7 +9,7 @@ catalog-api-repo:
   service_id: githubpublic
   parameters:
     repo_name: "cloudco-insurance-catalog"
-    repo_url: "https://github.com/IBM-Bluemix/insurance-catalog"
+    repo_url: "https://github.com/IBM-Cloud/insurance-catalog"
     type: clone
     has_issues: true
 
@@ -17,7 +17,7 @@ orders-api-repo:
   service_id: githubpublic
   parameters:
     repo_name: "cloudco-insurance-orders"
-    repo_url: "https://github.com/IBM-Bluemix/insurance-orders"
+    repo_url: "https://github.com/IBM-Cloud/insurance-orders"
     type: clone
     has_issues: true
 
@@ -25,7 +25,7 @@ ui-repo:
   service_id: githubpublic
   parameters:
     repo_name: "cloudco-insurance-bot"
-    repo_url: "https://github.com/IBM-Bluemix/insurance-bot"
+    repo_url: "https://github.com/IBM-Cloud/insurance-bot"
     type: clone
     has_issues: true
 
@@ -33,7 +33,7 @@ dashboard-repo:
   service_id: githubpublic
   parameters:
     repo_name: "cloudco-insurance-dashboard"
-    repo_url: "https://github.com/IBM-Bluemix/insurance-bot-dashboard"
+    repo_url: "https://github.com/IBM-Cloud/insurance-bot-dashboard"
     type: clone
     has_issues: true
 

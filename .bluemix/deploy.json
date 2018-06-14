@@ -6,15 +6,15 @@
     "type": "object",
     "properties": {
         "selected-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud region",
             "type": "string"
         },
         "selected-organization": {
-            "description": "The bluemix org",
+            "description": "The IBM Cloud org",
             "type": "string"
         },
        "selected-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud space",
             "type": "string"
         },
         "orders-app-name": {

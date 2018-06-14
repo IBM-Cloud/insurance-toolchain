@@ -1,6 +1,6 @@
 # Cloud Insurance Co. - Toolchain
 
-This toolchain deploys the [Cloud Insurance Co.](https://github.com/IBM-Bluemix/cloudco-insurance) project.
+This toolchain deploys the [Cloud Insurance Co.](https://github.com/IBM-Cloud/cloudco-insurance) project.
 
 Get started with this project, which is an online insurance application that consists of microservices:
 
@@ -19,11 +19,11 @@ Get started with this project, which is an online insurance application that con
 
 1. **To get started, click this button:**
 
-  [![Deploy To Bluemix](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
+  [![Deploy To IBM Cloud](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
 
   Clicking it will:
   * **create 4 GitHub repositories** with the required source code for all the application components;
-  * **instantiate the toolchain** in your Bluemix org and space;
+  * **instantiate the toolchain** in your IBM Cloud org and space;
   * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
 
@@ -39,18 +39,18 @@ The toolchain is preconfigured for:
 
 ### Learn more
 
-* Bluemix DevOps Services: https://new-console.ng.bluemix.net/devops
-* Documentation on [Bluemix Toolchains][toolchains_overview_url]
+* IBM Cloud DevOps Services: https://new-console.ng.bluemix.net/devops
+* Documentation on [IBM Cloud Toolchains][toolchains_overview_url]
 * InterConnect 2016 [video recording][toolchains_interconnect_video_url]
-* [IBM Bluemix Garage Method][garage_method_url]
+* [IBM Cloud Garage Method][garage_method_url]
 
 <!--Links-->
-[bot_github_url]: https://github.com/IBM-Bluemix/insurance-bot
-[orders_github_url]: https://github.com/IBM-Bluemix/insurance-orders
-[catalog_github_url]: https://github.com/IBM-Bluemix/insurance-catalog
-[dashboard_github_url]: https://github.com/IBM-Bluemix/insurance-bot-dashboard
-[ios_github_url]: https://github.com/IBM-Bluemix/insurance-bot-ios
-[android_github_url]: https://github.com/IBM-Bluemix/insurance-bot-android
+[bot_github_url]: https://github.com/IBM-Cloud/insurance-bot
+[orders_github_url]: https://github.com/IBM-Cloud/insurance-orders
+[catalog_github_url]: https://github.com/IBM-Cloud/insurance-catalog
+[dashboard_github_url]: https://github.com/IBM-Cloud/insurance-bot-dashboard
+[ios_github_url]: https://github.com/IBM-Cloud/insurance-bot-ios
+[android_github_url]: https://github.com/IBM-Cloud/insurance-bot-android
 [toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
 [garage_method_url]: https://www.ibm.com/devops/method
