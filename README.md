@@ -17,9 +17,9 @@ Get started with this project, which is an online insurance application that con
 
 2. It is recommended to [create a new space](https://console.bluemix.net/docs/account/orgs_spaces.html#orgsspacesusers) in your organization. This helps grouping the apps and services together in the console.
 
-3. **To get started, click this button:**
+3. **To Deploy, click this button:**
 
-    [![Deploy To IBM Cloud](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
+    [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
 
     Clicking it will:
     * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
