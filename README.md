@@ -23,7 +23,7 @@ Get started with this project, which is an online insurance application that con
 
     Clicking it will:
     * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
-    * **create 4 GitHub repositories** with the required source code for all the application components;
+    * **create 4 GitHub repositories** with the required source code for all the application components; You may be asked to provide permissions to create repos on your GitHub account.
     * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
 4. Once deployed, Click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
@@ -40,7 +40,7 @@ The toolchain is preconfigured for:
 
 ### Learn more
 
-* IBM Cloud DevOps Services: https://new-console.ng.bluemix.net/devops
+* IBM Cloud DevOps Services: https://console.ng.bluemix.net/devops
 * Documentation on [IBM Cloud Toolchains][toolchains_overview_url]
 * [IBM Cloud Garage Method][garage_method_url]
 
@@ -51,6 +51,6 @@ The toolchain is preconfigured for:
 [dashboard_github_url]: https://github.com/IBM-Cloud/insurance-bot-dashboard
 [ios_github_url]: https://github.com/IBM-Cloud/insurance-bot-ios
 [android_github_url]: https://github.com/IBM-Cloud/insurance-bot-android
-[toolchains_overview_url]: https://new-console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
+[toolchains_overview_url]: https://console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
 [garage_method_url]: https://www.ibm.com/devops/method
