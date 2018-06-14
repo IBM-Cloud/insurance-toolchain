@@ -19,12 +19,12 @@ Get started with this project, which is an online insurance application that con
 
 3. **To get started, click this button:**
 
-  [![Deploy To IBM Cloud](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
+    [![Deploy To IBM Cloud](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
 
-  Clicking it will:
-  * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
-  * **create 4 GitHub repositories** with the required source code for all the application components;
-  * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
+    Clicking it will:
+    * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
+    * **create 4 GitHub repositories** with the required source code for all the application components;
+    * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
 4. Once deployed, Click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
 
