@@ -40,7 +40,7 @@ The toolchain is preconfigured for:
 
 ### Learn more
 
-* IBM Cloud DevOps Services: https://console.ng.bluemix.net/devops
+* IBM Cloud DevOps Services: https://console.bluemix.net/devops
 * Documentation on [IBM Cloud Toolchains][toolchains_overview_url]
 * [IBM Cloud Garage Method][garage_method_url]
 
@@ -51,6 +51,6 @@ The toolchain is preconfigured for:
 [dashboard_github_url]: https://github.com/IBM-Cloud/insurance-bot-dashboard
 [ios_github_url]: https://github.com/IBM-Cloud/insurance-bot-ios
 [android_github_url]: https://github.com/IBM-Cloud/insurance-bot-android
-[toolchains_overview_url]: https://console.ng.bluemix.net/docs/toolchains/toolchains_overview.html
+[toolchains_overview_url]: https://console.bluemix.net/docs/services/ContinuousDelivery/toolchains_working.html
 [toolchains_interconnect_video_url]: https://vimeo.com/156126035/8b04b8878a
 [garage_method_url]: https://www.ibm.com/devops/method
