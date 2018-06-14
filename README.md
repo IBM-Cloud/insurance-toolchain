@@ -22,11 +22,11 @@ Get started with this project, which is an online insurance application that con
     [![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
 
     Clicking it will:
-    * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
-    * **create 4 GitHub repositories** with the required source code for all the application components; You may be asked to provide permissions to create repos on your GitHub account.
-    * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
+    * **Instantiate the toolchain** in your IBM Cloud org and space. Provide an unique name for the toolchain and select an appropriate region and org.  
+    * **Create 4 GitHub repositories** with the required source code for all the application components. You may be asked to provide permissions to create repos on your GitHub account.
+    * **Trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
-4. Once deployed, Click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
+4. Once deployed, click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
 
 The toolchain is preconfigured for:
 
