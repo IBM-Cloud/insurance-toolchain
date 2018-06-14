@@ -15,17 +15,18 @@ Get started with this project, which is an online insurance application that con
 
 1. Ensure you have 2GB of free memory and space for 5 additional services in your organization.
 
-1. It is recommended to create a new space in your organization. This helps grouping the apps and services together in the console.
+2. It is recommended to [create a new space](https://console.bluemix.net/docs/account/orgs_spaces.html#orgsspacesusers) in your organization. This helps grouping the apps and services together in the console.
 
-1. **To get started, click this button:**
+3. **To get started, click this button:**
 
   [![Deploy To IBM Cloud](./.bluemix/create_toolchain_button.png)](https://new-console.ng.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/IBM-Cloud/insurance-toolchain.git)
 
   Clicking it will:
+  * **instantiate the toolchain** in your IBM Cloud org and space; Provide an unique name for the toolchain and Select an appropriate region and org  
   * **create 4 GitHub repositories** with the required source code for all the application components;
-  * **instantiate the toolchain** in your IBM Cloud org and space;
   * **trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
+4. Once deployed, Click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
 
 The toolchain is preconfigured for:
 
@@ -41,7 +42,6 @@ The toolchain is preconfigured for:
 
 * IBM Cloud DevOps Services: https://new-console.ng.bluemix.net/devops
 * Documentation on [IBM Cloud Toolchains][toolchains_overview_url]
-* InterConnect 2016 [video recording][toolchains_interconnect_video_url]
 * [IBM Cloud Garage Method][garage_method_url]
 
 <!--Links-->
