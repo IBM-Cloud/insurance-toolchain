@@ -17,14 +17,6 @@
             "description": "The IBM Cloud space",
             "type": "string"
         },
-        "orders-app-name": {
-            "description": "orders app name",
-            "type": "string"
-        },
-        "catalog-app-name": {
-            "description": "catalog app name",
-            "type": "string"
-        },
         "ui-app-name": {
             "description": "ui app name",
             "type": "string"
@@ -32,14 +24,6 @@
         "dashboard-app-name": {
             "description": "dashboard app name",
             "type": "string"
-        },
-        "orders-branch-name": {
-          "description": "orders branch name to deploy",
-          "type": "string"
-        },
-        "catalog-branch-name": {
-          "description": "catalog branch name to deploy",
-          "type": "string"
         },
         "ui-branch-name": {
           "description": "ui branch name to deploy",
@@ -52,12 +36,8 @@
     },
     "required": [
       "selected-region", "selected-organization", "selected-space",
-      "orders-app-name",
-      "catalog-app-name",
       "ui-app-name",
       "dashboard-app-name",
-      "orders-branch-name",
-      "catalog-branch-name",
       "ui-branch-name",
       "dashboard-branch-name"
     ],
@@ -66,18 +46,6 @@
           "type": "validator",
           "url": "/devops/setup/bm-helper/helper.html"
        },
-       {
-          "type": "text",
-          "readonly": false,
-          "title": "Orders App Name",
-          "key": "orders-app-name"
-        },
-        {
-          "type": "text",
-          "readonly": false,
-          "title": "Catalog App Name",
-          "key": "catalog-app-name"
-        },
         {
           "type": "text",
           "readonly": false,
@@ -131,18 +99,6 @@
             "title": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev."
  		      }]
  	      },
-        {
-          "type": "text",
-          "readonly": false,
-          "title": "Orders Branch Name",
-          "key": "orders-branch-name"
-        },
-        {
-          "type": "text",
-          "readonly": false,
-          "title": "Catalog Branch Name",
-          "key": "catalog-branch-name"
-        },
         {
           "type": "text",
           "readonly": false,

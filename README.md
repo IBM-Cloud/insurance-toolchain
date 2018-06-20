@@ -4,8 +4,6 @@ This toolchain deploys the [Cloud Insurance Co.](https://github.com/IBM-Cloud/cl
 
 Get started with this project, which is an online insurance application that consists of microservices:
 
-* [insurance-catalog][catalog_github_url] - An API to retrieve and update a catalog of insurance policies
-* [insurance-orders][orders_github_url] - An API to retrieve and update a list of insurance policy orders made by customers
 * [insurance-bot][bot_github_url] - UI that provides a chat bot interface for users to query their health benefits and file claims.
 * [insurance-bot-dashboard][dashboard_github_url] - A user interface showing an history of the bot chats for further analysis.
 * [insurance-bot-ios][ios_github_url] - An iOS application for the chat bot.
@@ -13,7 +11,7 @@ Get started with this project, which is an online insurance application that con
 
 ## Create the toolchain
 
-1. Ensure you have 2GB of free memory and space for the Continuous Delivery and 5 additional services (3x IBM Cloudant, Watson Assistant, Tone Analyzer) in your organization.
+1. Ensure you have 2GB of free memory and space for the Continuous Delivery and 3 additional services (IBM Cloudant, Watson Assistant, Tone Analyzer) in your organization.
 
 2. It is recommended to [create a new space](https://console.bluemix.net/docs/account/orgs_spaces.html#orgsspacesusers) in your organization. This helps grouping the apps and services together in the console.
 
@@ -23,7 +21,7 @@ Get started with this project, which is an online insurance application that con
 
     Clicking it will:
     * **Instantiate the toolchain** in your IBM Cloud org and space. Provide an unique name for the toolchain and select an appropriate region and org.  
-    * **Create 4 GitHub repositories** with the required source code for all the application components. You may be asked to provide permissions to create repos on your GitHub account.
+    * **Create 2 GitHub repositories** with the required source code for all the application components. You may be asked to provide permissions to create repos on your GitHub account.
     * **Trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
 4. Once deployed, click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
@@ -47,8 +45,6 @@ The toolchain is preconfigured for:
 
 <!--Links-->
 [bot_github_url]: https://github.com/IBM-Cloud/insurance-bot
-[orders_github_url]: https://github.com/IBM-Cloud/insurance-orders
-[catalog_github_url]: https://github.com/IBM-Cloud/insurance-catalog
 [dashboard_github_url]: https://github.com/IBM-Cloud/insurance-bot-dashboard
 [ios_github_url]: https://github.com/IBM-Cloud/insurance-bot-ios
 [android_github_url]: https://github.com/IBM-Cloud/insurance-bot-android

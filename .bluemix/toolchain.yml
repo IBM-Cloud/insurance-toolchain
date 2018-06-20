@@ -1,26 +1,10 @@
 ---
 name: "Cloud-native Toolchain for Microservices (Cloud Insurance Co.)"
-description: "With this cloud-native toolchain, you use a sample to create an online insurance store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing.\n\nTo get started, click **Create**."
+description: "With this cloud-native toolchain, you use a sample to create an online insurance store. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing.\n\nTo get started, click **Create**."
 required:
  - deploy
 
 # Github repos
-catalog-api-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "cloudco-insurance-catalog"
-    repo_url: "https://github.com/IBM-Cloud/insurance-catalog"
-    type: clone
-    has_issues: true
-
-orders-api-repo:
-  service_id: githubpublic
-  parameters:
-    repo_name: "cloudco-insurance-orders"
-    repo_url: "https://github.com/IBM-Cloud/insurance-orders"
-    type: clone
-    has_issues: true
-
 ui-repo:
   service_id: githubpublic
   parameters:
@@ -51,45 +35,8 @@ ui-build:
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
-        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        ORDERS_APP_NAME: "{{deploy.parameters.orders-app-name}}"
       execute: true
     services: ["ui-repo"]
-  hidden: [form, description]
-
-catalog-api-build:
-  service_id: pipeline
-  parameters:
-    name: "catalog ({{deploy.parameters.catalog-branch-name}})"
-    configuration:
-      content: $file(catalog-api.pipeline.yml)
-      env:
-        REPO: "catalog-api-repo"
-        REPO_BRANCH: "{{deploy.parameters.catalog-branch-name}}"
-        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-      execute: true
-    services: ["catalog-api-repo"]
-  hidden: [form, description]
-
-orders-api-build:
-  service_id: pipeline
-  parameters:
-    name: "orders ({{deploy.parameters.orders-branch-name}})"
-    configuration:
-      content: $file(order-api.pipeline.yml)
-      env:
-        REPO: "orders-api-repo"
-        REPO_BRANCH: "{{deploy.parameters.orders-branch-name}}"
-        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        SPACE_NAME: "{{deploy.parameters.selected-space}}"
-        ORG_NAME: "{{deploy.parameters.selected-organization}}"
-        REGION_ID: "{{deploy.parameters.selected-region}}"
-        CATALOG_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-      execute: true
-    services: ["orders-api-repo"]
   hidden: [form, description]
 
 dashboard-build:
@@ -119,12 +66,8 @@ deploy:
     selected-region: "{{region}}"
     selected-organization: "{{organization}}"
     selected-space: "{{space}}"
-    orders-app-name: "{{name}}-orders"
-    catalog-app-name: "{{name}}-catalog"
     ui-app-name: "{{name}}-webui"
     dashboard-app-name: "{{name}}-dashboard"
-    orders-branch-name: "master"
-    catalog-branch-name: "master"
     ui-branch-name: "master"
     dashboard-branch-name: "master"
 
