@@ -32,6 +32,9 @@
         "dashboard-branch-name": {
           "description": "dashboard branch name to deploy",
           "type": "string"
+        },
+        "iam-api-key": {
+          "type": "string"
         }
     },
     "required": [
@@ -39,7 +42,8 @@
       "ui-app-name",
       "dashboard-app-name",
       "ui-branch-name",
-      "dashboard-branch-name"
+      "dashboard-branch-name",
+      "iam-api-key"
     ],
     "form": [
        {
@@ -95,6 +99,16 @@
  		      "columnCount": 1,
  		      "widths": ["100%"],
  		      "items": [{
+                  "type": "label",
+                  "title": "To deploy the applications, the pipelines require an [IBM Cloud Platform API key](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#ibmcloud_iam_api_key_create). Use the `ibmcloud iam api-key-create <name>` command to create a new API key if you do not already have a key."
+                },
+                {
+                  "type": "text",
+                  "readonly": false,
+                  "title": "IBM Cloud Platform API key",
+                  "key": "iam-api-key"
+                },
+                 {
  			      "type": "label",
             "title": "Enter the names of the branches to deploy. The default and most stable branch is master. To deploy the ongoing developments, you can change the branch names to dev."
  		      }]

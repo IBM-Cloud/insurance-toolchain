@@ -35,6 +35,7 @@ ui-build:
         SPACE_NAME: "{{deploy.parameters.selected-space}}"
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
+        IAM_API_KEY: "{{form.pipeline.parameters.iam-api-key}}"
       execute: true
     services: ["ui-repo"]
   hidden: [form, description]
