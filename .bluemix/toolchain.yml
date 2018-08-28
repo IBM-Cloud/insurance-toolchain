@@ -54,6 +54,7 @@ dashboard-build:
         ORG_NAME: "{{deploy.parameters.selected-organization}}"
         REGION_ID: "{{deploy.parameters.selected-region}}"
         UI_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        IAM_API_KEY: "{{form.pipeline.parameters.iam-api-key}}"
       execute: true
     services: ["dashboard-repo"]
   hidden: [form, description]
