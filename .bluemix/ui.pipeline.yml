@@ -25,6 +25,10 @@ stages:
   - name: IAM_API_KEY
     value: ${IAM_API_KEY}
     type: secure
+  - name: ASSISTANT_PLAN
+    value: "free"
+  - name: CLOUDANT_PLAN
+    value: "Lite"
   jobs:
   - name: Blue/Green Deploy
     type: deployer

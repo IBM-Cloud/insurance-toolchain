@@ -26,6 +26,8 @@ Get started with this project, which is an online insurance application that con
     * **Create 2 GitHub repositories** with the required source code for all the application components. You may be asked to provide permissions to create repos on your GitHub account.
     * **Trigger the toolchain**, thereby deploying the selected branches (default to master) for all application components.
 
+    > **Note:** If the deploy stage fails with the error, *The account already has an instance created with the Lite plan*, configure the stage's environment variables `ASSISTANT_PLAN=standard` or `CLOUDANT_PLAN=standard` based on the failed service. You can then re-run the deploy stage (you do not need to re-create the toolchain).
+
 4. Once deployed, click on the **bot(master)** tile under Deliver >  **Deploy** stage, check LAST EXECUTION RESULT to see the webui link for the bot.
 5. You can check and modify your toolchain anytime under [DevOps](https://console.bluemix.net/devops) on IBM Cloud. Choose an appropriate region and Org.
 
