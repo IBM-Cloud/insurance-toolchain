@@ -29,6 +29,10 @@ stages:
   properties:
   - name: REPO_BRANCH
     value: ${REPO_BRANCH}
+  - name: TONE_PLAN
+    value: "lite"
+  - name: CLOUDANT_PLAN
+    value: "Lite"
   jobs:
   - name: Blue/Green Deploy
     type: deployer
